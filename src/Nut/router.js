@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Example from './components/Example'
-import Ban from './components/Ban'
+import Login from './components/Login'
+import LoginToken from './components/LoginToken'
+
 
 
 export default new VueRouter({
@@ -11,11 +13,15 @@ export default new VueRouter({
 		  name: 'Hello',
 		  component: Example
 		},
-
 		{
-		  path: '/foo',
-		  name: 'Hello',
-		  component: Ban
+		  path: '/login',
+		  name: 'Autenticazione',
+		  component: Login
+		},
+		{
+		  path: '/oauth/:provider/token',
+		  name: 'Provider',
+		  component: LoginToken
 		}
 	],
 	hashbang: false,

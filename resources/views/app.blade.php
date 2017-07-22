@@ -14,6 +14,6 @@
         <main id='app'>
             <router-view></router-view>
         </main>
-        <script src="/js/app.js"></script>
+        <script src="/nut/app.js?v={{ microtime(true) }}"></script>
     </body>
 </html>

@@ -28,6 +28,41 @@ class GithubProvider extends Provider
         
     }
 
+
+
+    /**
+     * Issue access token
+     *
+     * @return array
+     */
+    public function getAccessToken($request)
+    {
+        $client = new \GuzzleHttp\Client();
+
+        try {
+            $params =  [
+                'form_params' => [
+                    'client_id' => $request->input('client_id'),
+                    'client_secret' => $request->input('client_secret'),
+                    'code' => $request->input('code')
+                ],
+                'headers' => [
+                    'Accept' => 'application/json'
+                ]
+            ];
+
+
+
+            $response = $client->request('POST', $this->url."/access_token", $params);
+        } catch (\Exception $e) {
+            throw $e;
+        }
+
+        $body = json_decode($response->getBody());
+
+        return $body;
+    }
+
     /**
      * Retrieve User
      *

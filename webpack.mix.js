@@ -13,3 +13,6 @@ let mix = require('laravel-mix');
 
 mix.js('src/Nut/app.js', 'public/nut')
    .sass('resources/assets/sass/app.scss', 'public/css');
+
+
+

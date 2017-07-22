@@ -11,7 +11,13 @@
 |
 */
 
-Route::any('/oauth/{name}/token', ['uses' => '\Api\Http\Controllers\Auth\SignInController@token']);
+
+
+Route::group(['prefix' => 'api/v1'], function() {
+	Route::any('/oauth/{name}/access_token', ['uses' => '\Api\Http\Controllers\Auth\SignInController@accessToken']);
+	Route::any('/oauth/{name}/exchange_token', ['uses' => '\Api\Http\Controllers\Auth\SignInController@exchangeToken']);
+
+});
 
 Route::any('/{all}', function () {
     return view('app');

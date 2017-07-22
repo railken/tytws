@@ -14,12 +14,23 @@
     "bootstrap-sass": "^3.3.7",
     "cross-env": "^5.0.1",
     "jquery": "^3.1.1",
+    "json-loader": "^0.5.6",
     "laravel-mix": "^1.0",
     "lodash": "^4.17.4",
     "vue": "^2.4.2"
   },
   "dependencies": {
+    "bootstrap-social": "^5.1.1",
+    "cookies": "^0.7.0",
+    "font-awesome": "^4.7.0",
+    "fs": "0.0.1-security",
+    "js-cookie": "^2.1.4",
+    "js-cookies": "^1.0.4",
+    "net": "^1.0.2",
     "npm-watch": "^0.2.0",
+    "query-string": "^4.3.4",
+    "store": "^2.0.12",
+    "tls": "0.0.1",
     "vue-router": "^2.7.0"
   }
 }

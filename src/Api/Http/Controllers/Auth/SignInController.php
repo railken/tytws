@@ -51,6 +51,41 @@ class SignInController extends Controller
         $this->manager = $manager;
     }
 
+    /**
+     * Request token and generate a new one
+     *
+     * @param string $provider
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function accessToken($provider, Request $request)
+    {
+        $provider = $this->getProvider($provider);
+
+        if (!$provider) {
+            return $this->error(['message' => 'No provider found']);
+        }
+
+        try {
+
+            $response = $provider->getAccessToken($request);
+            $access_token = $response->access_token;
+
+        } catch (\Exception $e) {
+            return $this->error([
+                'message' => 'Code invalid or expired'
+            ]);
+        } 
+
+        return $this->success(['data' => [
+            'resource' => [
+                'access_token' => $access_token
+            ]
+        ]]);
+
+    }
+
 
     /**
      * Request token and generate a new one
@@ -60,7 +95,7 @@ class SignInController extends Controller
      *
      * @return Response
      */
-    public function token($provider, Request $request)
+    public function exchangeToken($provider, Request $request)
     {
         $provider = $this->getProvider($provider);
 

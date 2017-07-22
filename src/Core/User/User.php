@@ -27,7 +27,7 @@ class User extends Model implements ModelContract
 	 * @var array
 	 */
 	protected $fillable = [
-        'username', 'email', 'password','avatar'
+        'username', 'email', 'password', 'avatar'
 	];
 
 
