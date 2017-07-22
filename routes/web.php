@@ -11,6 +11,7 @@
 |
 */
 
+Route::any('/oauth/{name}/token', ['uses' => '\Api\Http\Controllers\Auth\SignInController@token']);
 
 Route::any('/{all}', function () {
     return view('app');

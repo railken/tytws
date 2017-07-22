@@ -6,19 +6,20 @@ use Illuminate\Foundation\Auth\User as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Railken\Laravel\Manager\ModelContract;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Passport\HasApiTokens;
 
 class User extends Model implements ModelContract
 {
 	
     use Notifiable;
-	use SoftDeletes;
+	use HasApiTokens;
 
 	/**
 	 * The table associated with the model.
 	 *
 	 * @var string
 	 */
-	protected $table = 'user';
+	protected $table = 'users';
 
 	/**
 	 * The attributes that are mass assignable.
@@ -26,7 +27,7 @@ class User extends Model implements ModelContract
 	 * @var array
 	 */
 	protected $fillable = [
-        'username', 'email', 'password',
+        'username', 'email', 'password','avatar'
 	];
 
 
@@ -39,10 +40,4 @@ class User extends Model implements ModelContract
         'password', 'remember_token',
     ];
 
-	/**
-     * The attributes that should be mutated to dates.
-     *
-     * @var array
-     */
-    protected $dates = ['deleted_at'];
 }

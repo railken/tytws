@@ -4,6 +4,7 @@ namespace Core\User;
 
 use Railken\Laravel\Manager\ModelSerializer;
 use Railken\Laravel\Manager\ModelContract;
+use League\OAuth2\Server\CryptKey;
 
 class UserSerializer extends ModelSerializer
 {
@@ -21,5 +22,15 @@ class UserSerializer extends ModelSerializer
 			'id' => $entity->id
 		];
 	}
+
+
+    public function token($token)
+    {
+        return [
+            'access_token' => (string)$token->convertToJWT(new CryptKey('file://'.\Laravel\Passport\Passport::keyPath('oauth-private.key'))),
+            'token_type' => 'bearer',
+            'expire_in' => $token->expires_at->getTimestamp() - time()
+        ];
+    }
 
 }
