@@ -7,8 +7,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Railken\Laravel\Manager\ModelContract;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
+use Railken\Laravel\Manager\Permission\UserContract;
 
-class User extends Model implements ModelContract
+class User extends Model implements ModelContract, UserContract
 {
 	
     use Notifiable;
@@ -39,5 +40,10 @@ class User extends Model implements ModelContract
     protected $hidden = [
         'password', 'remember_token',
     ];
+    
+    public function getIdentifier()
+    {
+        return $this->id;
+    }
 
 }

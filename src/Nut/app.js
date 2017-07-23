@@ -9,6 +9,7 @@ import { container } from './services/container';
 import { env } from './env';
 import * as Cookies from "js-cookie";
 import { Request } from './services/request';
+import { TeamService } from './services/team'
 
 
 
@@ -42,6 +43,7 @@ container.set('route', window.location.pathname);
 container.set('services.oauth', new OAuth());
 container.set('services.request', new Request());
 container.set('services.cookies', Cookies);
+container.set('services.team', new TeamService());
 container.set('env', env);
 
 /*

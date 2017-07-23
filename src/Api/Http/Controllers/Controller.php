@@ -3,6 +3,9 @@
 namespace Api\Http\Controllers;
 
 use App\Http\Controllers\Controller as AppController;
+use Core\Permission\UserAgent;
+use Illuminate\Http\Request;
+
 
 class Controller extends AppController
 {
@@ -85,4 +88,18 @@ class Controller extends AppController
         return \Auth::user();
     }
    
+
+    /**
+     * Initialize call
+     *
+     * @param Request $request
+     *
+     * @return void
+     */
+    public function initialize(Request $request)
+    {
+
+        $this->manager->setAgent(new UserAgent($this->getUser()));
+
+    }
 }

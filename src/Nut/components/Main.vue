@@ -2,6 +2,7 @@
     <div v-if='user'>
         Welcome back
         {{ user.username }}
+        <team-list></team-list>
 
         <button class='btn btn-primary' v-on:click="logout()">Logout</button>
     </div>

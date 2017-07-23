@@ -29,4 +29,6 @@ export default new VueRouter({
 });
 
 
+Vue.component('team-list', require('./components/team-list.vue'));
+
 Vue.use(VueRouter);

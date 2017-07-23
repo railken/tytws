@@ -19,6 +19,15 @@ Route::group(['prefix' => 'api/v1'], function() {
 
 	Route::group(['middleware' => 'auth:api'], function() {
 		Route::any('/user', ['uses' => '\Api\Http\Controllers\User\UserController@index']);
+
+		Route::group(['prefix' => '/user/teams'], function () {
+            Route::get('/', ['uses' => '\Api\Http\Controllers\User\TeamsController@index']);
+            Route::post('/', ['uses' => '\Api\Http\Controllers\User\TeamsController@create']);
+            Route::get('/{id}', ['uses' => '\Api\Http\Controllers\User\TeamsController@show']);
+            Route::put('/{id}', ['uses' => '\Api\Http\Controllers\User\TeamsController@update']);
+            Route::delete('/{ids}', ['uses' => '\Api\Http\Controllers\User\TeamsController@delete']);
+        });
+
 	});
 });
 
