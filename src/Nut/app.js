@@ -5,9 +5,12 @@
  */
 import router from './router'
 import { OAuth } from './services/oauth';
-import store from 'store';
-import env from './env';
+import { container } from './services/container';
+import { env } from './env';
 import * as Cookies from "js-cookie";
+import { Request } from './services/request';
+
+
 
 
 require('./bootstrap');
@@ -31,22 +34,15 @@ router.mode = 'html5';
 
 const queryString = require('query-string');
 
-store.set('queryParams', queryString.parse(location.search));
+container.set('queryParams', queryString.parse(location.search));
 
 
-store.set('route', window.location.pathname);
+container.set('route', window.location.pathname);
 
-/**
- * Verify authentication
- */
-var access_token = Cookies.get('access_token');
-
-if (access_token) {
-
-	// Verify access_token
-}
-
-
+container.set('services.oauth', new OAuth());
+container.set('services.request', new Request());
+container.set('services.cookies', Cookies);
+container.set('env', env);
 
 /*
 if (store.get('route') != '/login') {

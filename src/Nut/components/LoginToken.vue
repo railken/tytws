@@ -6,23 +6,18 @@
 
 <script>
 
-	import { OAuth } from '../services/oauth';
-	import store from 'store';
-	import * as Cookies from "js-cookie";
+	import { container } from '../services/container';
 
     export default {
         mounted () 
         {
-        	var params = store.get('queryParams');
+        	var params = container.get('queryParams');
         	var provider = this.$route.params.provider;
-        	var oauth = new OAuth();
 
-
-        	oauth.providerSignInCode(provider, {
+        	container.get('services.oauth').providerSignInCode(provider, {
         		params: params,
         		success: function(response) {
 
-        			Cookies.set('access_token', response.data.resource.access_token);
         			window.location.href = "/";
         		},
         		error: function(response) {

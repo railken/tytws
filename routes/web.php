@@ -17,6 +17,9 @@ Route::group(['prefix' => 'api/v1'], function() {
 	Route::any('/oauth/{name}/access_token', ['uses' => '\Api\Http\Controllers\Auth\SignInController@accessToken']);
 	Route::any('/oauth/{name}/exchange_token', ['uses' => '\Api\Http\Controllers\Auth\SignInController@exchangeToken']);
 
+	Route::group(['middleware' => 'auth:api'], function() {
+		Route::any('/user', ['uses' => '\Api\Http\Controllers\User\UserController@index']);
+	});
 });
 
 Route::any('/{all}', function () {

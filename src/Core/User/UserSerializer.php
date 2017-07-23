@@ -19,7 +19,10 @@ class UserSerializer extends ModelSerializer
 	public function serialize(ModelContract $entity)
 	{
 		return [
-			'id' => $entity->id
+			'id' => $entity->id,
+			'username' => $entity->username,
+			'email' => $entity->email,
+			'avatar' => $entity->avatar
 		];
 	}
 

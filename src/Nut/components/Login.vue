@@ -25,15 +25,14 @@
 
 <script>
 
-	import { OAuth } from '../services/oauth'
+	import { container } from '../services/container'
 
     export default {
     	data: function() {
     		return {
     			login: function(provider) {
 
-    				var oauth = new OAuth();
-    				oauth.providerSignIn(provider);
+    				container.get('services.oauth').providerSignIn(provider);
 
     			}
     		};

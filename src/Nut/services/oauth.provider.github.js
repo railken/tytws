@@ -1,5 +1,5 @@
 import { OAuthProvider } from './oauth.provider';
-import { env } from '../env';
+import { container } from './container';
 
 export class OAuthGithubProvider extends OAuthProvider
 {
@@ -10,8 +10,8 @@ export class OAuthGithubProvider extends OAuthProvider
 		super();
 		this.url = "https://github.com/login/oauth";
 
-		this.client_id = env.oauth.github.client.id;
-		this.client_secret = env.oauth.github.client.secret;
+		this.client_id = container.get('env').oauth.github.client.id;
+		this.client_secret = container.get('env').oauth.github.client.secret;
 	}
 
 	getAuthorizeUrl()
