@@ -1,5 +1,6 @@
 
 import { OAuthGithubProvider } from './oauth.provider.github';
+import { OAuthGitlabProvider } from './oauth.provider.gitlab';
 import { container } from './container';
 
 // import { OAuth2FacebookProvider } from '../oauth/oauth2.facebook.provider';
@@ -70,6 +71,7 @@ export class OAuth
 	{	
 		var providers = {
 			github: new OAuthGithubProvider(),
+			gitlab: new OAuthGitlabProvider(),
 		};
 
 		return typeof providers[provider] !== "undefined" ? providers[provider] : null;

@@ -21,6 +21,7 @@
         			window.location.href = "/";
         		},
         		error: function(response) {
+                    
         			window.location.href = "/login";
         		}
         	});

@@ -5,13 +5,12 @@
 	            Track your timey stuff
 	        </div>
 	        <p>
-	            The Doctor approve it. 
 	        </p>
 	        <div class='buttons'>
 		        <a class="btn btn-block btn-social btn-dropbox">
 		            <span style='display:flex;align-items:center;justify-content:center'><img src="/assets/horizon.png" width='20' height='20'></span> Sign in with Horizon
 		        </a>
-		        <button class="btn btn-block btn-social btn-odnoklassniki" style='background: #554488' v-on:click="login('github');">
+		        <button class="btn btn-block btn-social btn-odnoklassniki" style='background: #554488' v-on:click="login('gitlab');">
 		            <span class="fa fa-gitlab"></span> Sign in with GitLab
 		        </button>
 		        <button class="btn btn-block btn-social btn-github" v-on:click="login('github');">
@@ -45,6 +44,11 @@
 </script>
 
 <style>
+	
+	.content {
+		padding-top: 50px;
+	}
+
 	.position-ref {
     	position: relative;
 	}
