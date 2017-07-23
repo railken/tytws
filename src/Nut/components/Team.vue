@@ -6,8 +6,8 @@
             <div class='container-teams'>
                 <component-team-list></component-team-list>
             </div>
-            <div class='container-content'>
-                Dashboard
+            <div class='container-content' v-if='team'>
+                <component-team-view></component-team-view>
             </div>
         </div>
     </div>
@@ -15,11 +15,13 @@
 
 <script>
     import { container } from '../services/container';
+
     export default {
 
         data: function() {
             return { 
                 user: null,
+                team: null,
                 logout: function() {
 
                     container.get('services.oauth').logout();
@@ -38,13 +40,25 @@
                     window.location.href = "/login";
                 }
             });
-           
+            
+            var team_id = this.$route.params.team;
+
+            container.get('services.team').get(team_id, {
+                params: {},
+                success: function(response) {
+                    self.team = response.data.resources;
+                    container.set('team', self.team);
+                },
+                error: function(response) {
+                    console.log(response);
+                }
+            });
         }
     }
 
+
     require('./layout.css');
 </script>
-
 
 <style>
 

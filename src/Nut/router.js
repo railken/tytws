@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Main from './components/Main'
 import Login from './components/Login'
 import LoginToken from './components/LoginToken'
+import Team from './components/Team'
 
 
 
@@ -22,6 +23,11 @@ export default new VueRouter({
 			path: '/oauth/:provider/token',
 			name: 'Provider',
 			component: LoginToken
+		},
+		{
+			path: '/team/:team',
+			name: 'Team',
+			component: Team
 		}
 	],
 	hashbang: false,
@@ -29,6 +35,8 @@ export default new VueRouter({
 });
 
 
-Vue.component('team-list', require('./components/team-list.vue'));
+Vue.component('component-header', require('./components/header.vue'));
+Vue.component('component-team-list', require('./components/team-list.vue'));
+Vue.component('component-team-view', require('./components/team-view.vue'));
 
 Vue.use(VueRouter);
