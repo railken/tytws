@@ -80,7 +80,7 @@ export class OAuth
 	loadUser(vars)
 	{
 		var access_token = container.get('services.cookies').get('access_token');
-
+		this.access_token = access_token;
 
         if (access_token) {
 

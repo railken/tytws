@@ -1,10 +1,15 @@
 <template>
     <div v-if='user'>
-        Welcome back
-        {{ user.username }}
+        <header>
+            Welcome back
+            {{ user.username }}
+
+            <button class='btn btn-primary' v-on:click="logout()">Logout</button>
+
+        </header>
+        <h2>Content: </h2>
         <team-list></team-list>
 
-        <button class='btn btn-primary' v-on:click="logout()">Logout</button>
     </div>
 </template>
 

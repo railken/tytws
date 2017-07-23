@@ -15,6 +15,7 @@ import { TeamService } from './services/team'
 
 
 require('./bootstrap');
+require('./lib');
 
 
 /**
@@ -35,6 +36,7 @@ router.mode = 'html5';
 
 const queryString = require('query-string');
 
+container.set('env', env);
 container.set('queryParams', queryString.parse(location.search));
 
 
@@ -44,7 +46,6 @@ container.set('services.oauth', new OAuth());
 container.set('services.request', new Request());
 container.set('services.cookies', Cookies);
 container.set('services.team', new TeamService());
-container.set('env', env);
 
 /*
 if (store.get('route') != '/login') {

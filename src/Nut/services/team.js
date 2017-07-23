@@ -1,35 +1,45 @@
 import { container } from './container';
 
-export class Team
+export class TeamService
 {
 
 	constructor()
 	{
 		this.container = container;
+		this.url = container.get('env').api.url;
+	}
+
+	request(method, url, vars)
+	{
+		vars.headers = {
+			Authorization: "Bearer "+this.container.get('services.oauth').access_token
+		};
+
+		return this.container.get('services.request').basicCall(method, this.url+"/api/v1"+url, vars);
 	}
 
 	all(vars)
 	{
-	    this.container.get('services.request').basicCall("GET", "/api/v1/teams", vars);
+	    this.request("GET", "/user/teams", vars);
 	}
 
 	insert(vars)
 	{
-	    this.container.get('services.request').basicCall("POST", "/api/v1/teams", vars);
+	    this.request("POST", "/user/teams", vars);
 	}
 
 	update(id, vars)
 	{
-	    this.container.get('services.request').basicCall("PUT", "/api/v1/teams/"+id, vars);
+	    this.request("PUT", "/user/teams/"+id, vars);
 	}
 
 	remove(id, vars)
 	{
-	    this.container.get('services.request').basicCall("DELETE", "/api/v1/teams/"+id, vars);
+	    this.request("DELETE", "/user/teams/"+id, vars);
 	}
 	
 	get(id, vars)
 	{
-	    this.container.get('services.request').basicCall("GET", "/api/v1/teams/"+id, vars);
+		this.request("GET", "/user/teams/"+id, vars);
 	}
 }
