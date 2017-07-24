@@ -81,40 +81,49 @@
         </div>
 
         <div class='paper'>
-            <div class='fluid'>
-                <span>{{ team.name }}</span>
+            <div class='fluid content-spacing'>
+                <span><h1>{{ team.name }}</h1></span>
+                <div class='fill'></div>
                 <div class='fluid fluid-stretch dropdown'>
-                    <div class='nav-project-action-icon-a fluid fluid-vcenter fill' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="nav-team-actions">
+                    <div class='team-icon-settings fluid fluid-vcenter fill' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="nav-team-actions">
                  
                         <i class='fa fa-gear nav-project-action-icon'></i>
                     </div>
-                    <div class="dropdown-menu" aria-labelledby="nav-team-actions">
-
-                        <!--<a class="dropdown-item" href="#" data-toggle="modal" data-team-id='{team.id}' data-target="#project-create">Create project</a>-->
+                    <div class="dropdown-menu  dropdown-menu-right" aria-labelledby="nav-team-actions">
 
                         <a class="dropdown-item" href="#" data-toggle="modal" data-target="#team-update" data-id="{id}">Edit</a>
                         <a class="dropdown-item" href="#" data-toggle="modal" data-target="#team-change-avatar" data-id="{id}">Change avatar</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#" data-toggle="modal" data-target="#team-remove" data-id="{id}">Remove</a>
-                        <!--
-                        <form method='POST' class='projects-delete'>
-                            <input type='hidden' name='id' value='{id}'>
-                            <button class="dropdown-item" type='submit'>Leave project</button>
-                        </form>-->
                     </div>
                 </div>
 
             </div>
         </div>
 
-        <div class='fluid'>
-            <div class='paper'>
-                Last month
-            </div>
-            <div class='paper'>
-                Current month
-            </div>
+        <div class='paper content-spacing'>
+            <select class='form-control'>
+                <option>Today</option>
+                <option>Yesterday</option>
+                <option>Current Week</option>
+                <option>Previous Week</option>
+                <option>Current Month</option>
+                <option>Previous Month</option> 
+            </select>
         </div>
+        <div class='paper content-spacing'>
+            Sum of total hours
+        </div>
+
+        <div class='paper content-spacing'>
+            chart1:  hours x days 
+        </div>
+
+        <div class='paper content-spacing'>
+            chart2: how many hours x hour of day 
+        </div>
+
+        <component-activity-list v-bind:team='team'></component-activity-list>
     </div>
 </template>
 
@@ -128,7 +137,7 @@
         data: function() {
             return { 
                 team: null,
-                user: container.get('team'),
+                user: container.get('user'),
                 form: {
                     update: {}
                 },
@@ -214,3 +223,9 @@
         }
     }
 </script>
+
+<style>
+    .team-icon-settings {
+        font-size: 24px;
+    }
+</style>

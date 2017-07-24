@@ -49,6 +49,7 @@ abstract class RestController extends Controller
 
         $searches = $request->input('search', []);
 
+        
         $query->where(function ($qb) use ($searches) {
             foreach ($searches as $name => $search) {
                 $qb->where($name, $search);

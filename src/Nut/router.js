@@ -38,5 +38,6 @@ export default new VueRouter({
 Vue.component('component-header', require('./components/header.vue'));
 Vue.component('component-team-list', require('./components/team-list.vue'));
 Vue.component('component-team-view', require('./components/team-view.vue'));
+Vue.component('component-activity-list', require('./components/activity-list.vue'));
 
 Vue.use(VueRouter);

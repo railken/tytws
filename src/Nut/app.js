@@ -3,13 +3,14 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
-import router from './router'
+import router from './router';
 import { OAuth } from './services/oauth';
 import { container } from './services/container';
 import { env } from './env';
 import * as Cookies from "js-cookie";
 import { Request } from './services/request';
-import { TeamService } from './services/team'
+import { TeamService } from './services/team';
+import { ActivityService } from './services/activity';
 
 
 

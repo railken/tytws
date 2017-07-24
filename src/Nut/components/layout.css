@@ -31,31 +31,18 @@ nav .nav-list {
     background-color: #fff;
     border: 1px solid #f1f1f1;
     border-width: 0 1px 0 1px;
+    box-shadow: 1px 0px 6px rgba(0, 0, 0, 0.15);
     margin: 10px;
+}
+
+.content-spacing {
+    padding: 10px;
 }
 
 .modal textarea {
     resize: vertical;
 }
 
-.container-left-side { 
-    position: fixed;
-    max-height: 100%;
-    border: none;
-    border-right: 1px solid #e6e6e6;
-    box-shadow: 1px 0px 6px rgba(0, 0, 0, 0.15);
-}
-
-.container-left-side-top {
-    padding: 6px 8px;
-    background: white;
-    border-bottom: 1px solid #e6e6e6;
-}
-
-
-nav .nav-project:not(:last-child){
-    border-bottom: 1px solid #efefef;
-}
 
 .nav-teams {
     background: #3d3d47;
