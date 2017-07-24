@@ -6,7 +6,7 @@
             <div class='container-teams'>
                 <component-team-list></component-team-list>
             </div>
-            <div class='container-content full-height'>
+            <div class='container-content fill'>
                 <component-team-view></component-team-view>
             </div>
         </div>

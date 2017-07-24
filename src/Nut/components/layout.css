@@ -1,196 +1,111 @@
 
-    .main {
-        padding-top: 51px;
-    }
-    main {
-        background: #fafafa;
-        font-size: 14px;
-    }
+.main {
+    margin-top: 51px;
+}
+main {
+    background: #fafafa;
+    font-size: 14px;
+}
 
 
-    .container {
-        max-width: 1024px;
-        min-height: 100vh;
-    }
+.container {
+    max-width: 1024px;
+    min-height: 100vh;
+}
 
-    .side-left {
-        width: auto;
-    }
+.side-left {
+    width: auto;
+}
 
-    .side-left-resizable {
-        width: 100%;
-        min-width: 200px;
-        max-width: 400px;
-    }
+.side-left-resizable {
+    width: 100%;
+    min-width: 200px;
+    max-width: 400px;
+}
 
-    nav .nav-list {
-        display: block;
-        font-size: 16px;
-    }
+nav .nav-list {
+    display: block;
+    font-size: 16px;
+}
 
-    .paper {
-        background-color: #fff;
-        border: 1px solid #f1f1f1;
-        border-width: 0 1px 0 1px;
-        margin: 10px;
-    }
+.paper {
+    background-color: #fff;
+    border: 1px solid #f1f1f1;
+    border-width: 0 1px 0 1px;
+    margin: 10px;
+}
 
-    .modal textarea {
-        resize: vertical;
-    }
+.modal textarea {
+    resize: vertical;
+}
 
-    .container-left-side { 
-        position: fixed;
-        max-height: 100%;
-        border: none;
-        border-right: 1px solid #e6e6e6;
-        box-shadow: 1px 0px 6px rgba(0, 0, 0, 0.15);
-    }
+.container-left-side { 
+    position: fixed;
+    max-height: 100%;
+    border: none;
+    border-right: 1px solid #e6e6e6;
+    box-shadow: 1px 0px 6px rgba(0, 0, 0, 0.15);
+}
 
-    .container-left-side-top {
-        padding: 6px 8px;
-        background: white;
-        border-bottom: 1px solid #e6e6e6;
-    }
+.container-left-side-top {
+    padding: 6px 8px;
+    background: white;
+    border-bottom: 1px solid #e6e6e6;
+}
 
-    nav {
-        overflow-y: scroll;  
-    }
+nav {
+    overflow-y: scroll;  
+}
 
-    nav .nav-project:not(:last-child){
-        border-bottom: 1px solid #efefef;
-    }
+nav .nav-project:not(:last-child){
+    border-bottom: 1px solid #efefef;
+}
 
-    .nav-project {
-        background: white;
-        cursor: pointer;
-    }
+.nav-teams {
+    background: #3d3d47;
+    border-left: 5px solid #3a3a43;
+    min-width: 60px;
+}
 
-    .nav-project .nav-project-spacing {
-        padding: 10px 20px;
-    }
+.nav-team {
+    border-radius: 5px;
+    margin: 10px 4px;
+    width: 50px;
+    height: 50px;
+    opacity: 0.7;
+    cursor: pointer;
+    font-size: 30px;
+    text-align: center;
+    color: #505061;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
+.nav-team-add {
+    background: white;
+}
 
-    .nav-project .dropdown-menu {
-        left: auto;
-        right: 10px;
-        margin-top: -2px;
-    }
+.nav-team:hover {
+    opacity: 0.9;
+}
 
-    .team-name {
-
-        white-space: nowrap;
-        overflow: hidden;
-
-    }
-    .nav-project-info {
-        padding-left: 0 !important;
-        white-space: nowrap;
-        overflow: hidden;
-    }
-
-    .nav-project-action-icon {
-        opacity: 0.5;
-        font-size: 18px;
-
-    }
-
-    .nav-project-icon {
-        font-size: 24px;
-        /*box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);*/
-    }
-
-    .nav-project-icon {
-        border-radius: 7px;
-        overflow: hidden;
-    }
-
-    .nav-project-icon-default {
-        font-size: 24px;
-        text-align: center;
-        line-height: 40px;
-        width: 40px;
-        height: 40px;
-    }
-    .nav-project-icon {
-        min-width: 40px;
-        width: 40px;
-        height: 40px;
-    }
-
-    .nav-project-action-icon-a {
-        opacity: 0.5;
-        font-size: 24px;
-        cursor: pointer;
-    }
-
-    .nav-project-action-icon-a:hover {
-        color: #505061;
-        opacity: 1.0;
-    }
-
-    .nav-project-actions {
-        padding: 10px 20px;
-        border-left: 1px solid #efefef;
-    }
-
-    .nav-project:hover {
-        background: rgba(0, 0, 0, 0.005);
-    }
-
-    .nav-project:not(:hover) .nav-project-actions{
-        visibility: hidden;
-    }
-
-    .nav-project-actions:hover {
-        background: rgba(0, 0, 0, 0.01);
-    }
-
-    .nav-teams {
-        background: #3d3d47;
-        border-left: 5px solid #3a3a43;
-        min-width: 60px;
-    }
-
-    .nav-team {
-        border-radius: 5px;
-        margin: 10px 4px;
-        width: 50px;
-        height: 50px;
-        opacity: 0.7;
-        cursor: pointer;
-        font-size: 30px;
-        text-align: center;
-        color: #505061;
-        overflow: hidden;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .nav-team-add {
-        background: white;
-    }
-
-    .nav-team:hover {
-        opacity: 0.9;
-    }
-
-    .nav-team.active {
-        opacity: 1.0;
-    }
+.nav-team.active {
+    opacity: 1.0;
+}
 
 
-    ::-webkit-scrollbar {
-        width: 6px;
-        background: rgba(0, 0, 0, 0.05);
-    }
+::-webkit-scrollbar {
+    width: 6px;
+    background: rgba(0, 0, 0, 0.05);
+}
 
-    ::-webkit-scrollbar-thumb {
-        background: rgba(0, 0, 0, 0.15);
-        width: 6px;
-    }
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.15);
+    width: 6px;
+}
 
-    ::-webkit-scrollbar-corner {
-        background: #000;
-    }
+::-webkit-scrollbar-corner {
+    background: #000;
+}

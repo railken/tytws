@@ -80,7 +80,8 @@
             </div>
         </div>
 
-        <h1 class='fluid'>
+        <div class='paper'>
+        <div class='fluid'>
             <span>{{ team.name }}</span>
             <div class='fluid fluid-stretch dropdown'>
                 <div class='nav-project-action-icon-a fluid fluid-vcenter fill' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="nav-team-actions">
@@ -103,7 +104,8 @@
                 </div>
             </div>
 
-        </h1>
+        </div>
+        </div>
     </div>
 </template>
 

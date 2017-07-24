@@ -10,8 +10,8 @@
         </div>
         <div class='header-sync-container'>
 
-            <i class="fa fa-refresh rotate-1" aria-hidden="true"></i>
-            <span class='text-sm'>SYNCING</span>
+            <!--<i class="fa fa-refresh rotate-1" aria-hidden="true"></i>
+            <span class='text-sm'>SYNCING</span>-->
 
             <i class="fa fa-refresh" aria-hidden="true"></i>
             <span class='text-sm'>IN SYNC</span>
@@ -22,8 +22,9 @@
         <div class='header-container-user'>
             {{ user.username }}
         </div>
-
-
+        <div>
+            &nbsp;&nbsp;
+        </div>
         <span v-on:click="logout()"><i class='fa fa-sign-out'></i></span>
 
     </header>
