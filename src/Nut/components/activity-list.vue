@@ -234,7 +234,8 @@
                     params: {
                         "search[team_id]": self.team.id,
                         activities_from: act.from,
-                        activities_to: act.to
+                        activities_to: act.to,
+                        show: 999
                     },
                     success: function(response) {
 

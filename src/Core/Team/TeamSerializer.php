@@ -15,16 +15,18 @@ class TeamSerializer extends ModelSerializer
 	 *
 	 * @return array
 	 */
-	public function serialize(ModelContract $entity, $activities = [])
+	public function serialize(ModelContract $entity, $activities = [], $activities_from = null, $activities_to = null)
 	{
+
+
 		return [
 			'id' => $entity->id,
 			'uid' => $entity->uid,
 			'name' => $entity->name,
 			'description' => $entity->description,
             'avatar' => $entity->avatar ? \Storage::url($entity->avatar)."?=".\Storage::lastModified($entity->avatar) : null,
-            'info' => $this->info($entity, $activities),
-            'reports' => $this->reports($entity, $activities)
+            'info' => $this->info($entity, $activities, $activities_from, $activities_to),
+            'reports' => $this->reports($entity, $activities, $activities_from, $activities_to)
 		];
 	}
 
@@ -35,7 +37,7 @@ class TeamSerializer extends ModelSerializer
 	 *
 	 * @return array
 	 */
-	public function info(ModelContract $entity, $activities)
+	public function info(ModelContract $entity, $activities, $activities_from, $activities_to)
 	{
 
 		if (empty($activities))
@@ -66,24 +68,29 @@ class TeamSerializer extends ModelSerializer
 	 *
 	 * @return array
 	 */
-	public function reports(ModelContract $entity, $activities)
+	public function reports(ModelContract $entity, $activities, $activities_from, $activities_to)
 	{
 
 		if (empty($activities))
 			return [];
 
 		return [
-			'hoursPerDay' => $this->reportHoursPerDay($activities)
+			'hoursPerDay' => $this->reportHoursPerDay($activities, $activities_from, $activities_to)
 		];
 	}
 
-	public function reportHoursPerDay($activities)
+	public function reportHoursPerDay($activities, $activities_from, $activities_to)
 	{
 		$data = collect();
 
+		for ($date = clone $activities_from; $date <= (clone $activities_to)->setTime(23, 59, 59); $date->modify("+1 days")) {
+			$data[$date->format('Y-m-d')] = 0;
+		}
+
+
 		$activities->map(function($activity) use (&$data){
             
-            $index = $activity->started_at->format('Y-m-d 00:00:00');
+            $index = $activity->started_at->format('Y-m-d');
 
             if (!isset($data[$index]))
             	$data[$index] = 0;
@@ -94,6 +101,8 @@ class TeamSerializer extends ModelSerializer
 
 		$data = $data->map(function($v) {
         	return round($v/3600);
+		})->sortBy(function($k, $key) {
+			return (new \DateTime($key))->getTimestamp();
 		});
 
         return [

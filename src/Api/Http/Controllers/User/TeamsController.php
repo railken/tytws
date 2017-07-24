@@ -34,10 +34,14 @@ class TeamsController extends Controller
 
         $entity = $manager->find($id);
 
+        $activities_from = new \DateTime($request->input("activities_from", (new \DateTime())->format('Y-m-d H:i:s')));
+        $activities_to = new \DateTime($request->input("activities_to", (new \DateTime())->format('Y-m-d H:i:s')));
+
+
        	$activities = $entity
        		->activities()
-       		->where("started_at", ">=", $request->input("activities_from", (new \DateTime())->format('Y-m-d 00:00:00')))
-       		->where("ended_at", "<=", $request->input("activities_to", (new \DateTime())->format('Y-m-d 23:59:59')))
+       		->where("started_at", ">=", $activities_from->format('Y-m-d 00:00:00'))
+       		->where("ended_at", "<=", $activities_to->format('Y-m-d 23:59:59'))
        		->get();
 
 
@@ -48,7 +52,7 @@ class TeamsController extends Controller
         return $this->success([
             'message' => 'ok',
             'data' => [
-                'resources' => $this->manager->serializer->serialize($entity, $activities)
+                'resources' => $this->manager->serializer->serialize($entity, $activities, $activities_from, $activities_to)
             ]
         ]);
     }

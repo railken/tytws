@@ -63,7 +63,6 @@ class Team extends Model implements ModelContract, ResourceContract
         });
 
 
-        $time = round($time/3600);
         return $time;
     }
 }
