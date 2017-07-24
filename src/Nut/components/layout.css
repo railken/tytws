@@ -10,7 +10,6 @@ main {
 
 .container {
     max-width: 1024px;
-    min-height: 100vh;
 }
 
 .side-left {
