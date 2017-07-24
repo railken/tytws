@@ -93,11 +93,6 @@
                 {
                     container.get('router').push({ name: 'team', params: {team: team.id}});
                 },
-                edit: function(team)
-                {
-                    this.form.update = team;
-                    this.editing = team;
-                },
                 add: function(status)
                 {
                     this.adding = status;
@@ -136,8 +131,6 @@
                     });
 
                 },
-
-                
             }
         },
         mounted() {

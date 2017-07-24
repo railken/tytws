@@ -1,16 +1,16 @@
 <template>
-    <div v-if='user'>
+    <main v-if='user' class='full-height'>
         <component-header></component-header>
             
         <div class='fluid main'>
             <div class='container-teams'>
                 <component-team-list></component-team-list>
             </div>
-            <div class='container-content'>
+            <div class='container-content full-height'>
                 <component-team-view></component-team-view>
             </div>
         </div>
-    </div>
+    </main>
 </template>
 
 <script>

@@ -1,5 +1,5 @@
 <template>
-	<div class="fluid fluid-center">
+	<main class="fluid fluid-center">
 	    <div class="content">
 	        <div class="title m-b-md">
 	            Track your timey stuff
@@ -18,7 +18,7 @@
 		        </button>
 	        </div>
 	    </div>
-	</div>
+	</main>
 
 </template>
 

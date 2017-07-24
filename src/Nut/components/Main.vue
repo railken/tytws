@@ -1,5 +1,5 @@
 <template>
-    <div v-if='user'>
+    <main v-if='user' class='full-height'>
         <component-header></component-header>
             
         <div class='fluid main'>
@@ -10,7 +10,7 @@
                 Dashboard
             </div>
         </div>
-    </div>
+    </main>
 </template>
 
 <script>
