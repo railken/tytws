@@ -249,9 +249,9 @@
                         self.team = response.data.resources;
                         self.form.update = self.team;
 
-                        // self.charts.hoursPerDay = self.team.reports.hoursPerDay;
+                        self.charts.hoursPerDay.labels = self.team.reports.hoursPerDay.labels;
+                        self.charts.hoursPerDay.data = self.team.reports.hoursPerDay.data;
 
-                        console.log(self.filter.values.week_current());
                         setTimeout(function() {
 
                             self.drawCharts();
@@ -270,36 +270,41 @@
                 if (!$("#chart_1").length)
                     return;
 
-                return;
-                
-                var chart = new Chart($("#chart_1"), {
-                    type: 'line',
-                    data: {
-                        labels: this.charts.hoursPerDay.labels,
-                        datasets: [{
-                            label: 'Hours X Day',
-                            data: this.charts.hoursPerDay.data,
-                            backgroundColor: [
-                                'rgba(255, 99, 132, 0.2)',
-                                'rgba(54, 162, 235, 0.2)',
-                            ],
-                            borderColor: [
-                                'rgba(255,99,132,1)',
-                                'rgba(54, 162, 235, 1)',
-                            ],
-                            borderWidth: 1
-                        }]
-                    },
-                    options: {
-                        scales: {
-                            yAxes: [{
-                                ticks: {
-                                    beginAtZero:true
-                                }
+                if (!this.charts.hoursPerDay.el) {
+                    this.charts.hoursPerDay.el = new Chart($("#chart_1"), {
+                        type: 'line',
+                        data: {
+                            labels: [],
+                            datasets: [{
+                                label: 'Hours X Day',
+                                data: [],
+                                backgroundColor: [
+                                    'rgba(255, 99, 132, 0.2)',
+                                    'rgba(54, 162, 235, 0.2)',
+                                ],
+                                borderColor: [
+                                    'rgba(255,99,132,1)',
+                                    'rgba(54, 162, 235, 1)',
+                                ],
+                                borderWidth: 1
                             }]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero:true
+                                    }
+                                }]
+                            }
                         }
-                    }
-                });
+                    });
+                }
+
+
+                this.charts.hoursPerDay.el.data.labels = this.charts.hoursPerDay.labels;
+                this.charts.hoursPerDay.el.data.datasets[0].data = this.charts.hoursPerDay.data;
+                this.charts.hoursPerDay.el.update();
             }
 
         },

@@ -23,7 +23,8 @@ class TeamSerializer extends ModelSerializer
 			'name' => $entity->name,
 			'description' => $entity->description,
             'avatar' => $entity->avatar ? \Storage::url($entity->avatar)."?=".\Storage::lastModified($entity->avatar) : null,
-            'info' => $this->info($entity, $activities)
+            'info' => $this->info($entity, $activities),
+            'reports' => $this->reports($entity, $activities)
 		];
 	}
 
@@ -39,11 +40,12 @@ class TeamSerializer extends ModelSerializer
 
 		if (empty($activities))
 			return [];
-		
+
 		return [
 			'hours' => $this->infoHours($activities)
 		];
 	}
+
 
 	public function infoHours($activities)
 	{
@@ -57,4 +59,47 @@ class TeamSerializer extends ModelSerializer
 
 	}
 
+	/**
+	 * Serliaze reports team
+	 *
+	 * @param ModelContract $entity
+	 *
+	 * @return array
+	 */
+	public function reports(ModelContract $entity, $activities)
+	{
+
+		if (empty($activities))
+			return [];
+
+		return [
+			'hoursPerDay' => $this->reportHoursPerDay($activities)
+		];
+	}
+
+	public function reportHoursPerDay($activities)
+	{
+		$data = collect();
+
+		$activities->map(function($activity) use (&$data){
+            
+            $index = $activity->started_at->format('Y-m-d 00:00:00');
+
+            if (!isset($data[$index]))
+            	$data[$index] = 0;
+
+			$data[$index] += $activity->getTimeSpent();
+
+        });
+
+		$data = $data->map(function($v) {
+        	return round($v/3600);
+		});
+
+        return [
+        	'labels' => array_keys($data->toArray()),
+        	'data' => array_values($data->toArray())
+        ];
+
+	}
 }
