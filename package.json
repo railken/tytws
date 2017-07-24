@@ -22,6 +22,7 @@
   "dependencies": {
     "bootstrap-social": "^5.1.1",
     "cookies": "^0.7.0",
+    "cropperjs": "^1.0.0-rc.3",
     "font-awesome": "^4.7.0",
     "fs": "0.0.1-security",
     "js-cookie": "^2.1.4",

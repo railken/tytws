@@ -118,21 +118,7 @@
                     });
                 },
 
-                remove: function(team) {
-                    var self = this;
-                    this.team.resources.removeByAttribute('id', team.id);
-
-                    container.get('services.team').remove(team.id, {
-                        params: {},
-                        success: function(response) {
-                            self.all();
-                        },
-                        error: function(response) {
-                            console.log(response);
-                        }
-                    });
-
-                },
+             
                 
                 insert: function() {
                     var self = this;
@@ -151,20 +137,6 @@
 
                 },
 
-                update: function(team) {
-                    var self = this;
-                    this.team.resources.updateByAttribute('id', team.id, this.form.update);
-                    container.get('services.team').update(team.id, {
-                        params: self.form.update,
-                        success: function(response) {
-                            self.all();
-                        },
-                        error: function(response) {
-                            console.log(response);
-                        }
-                    });
-
-                },
                 
             }
         },

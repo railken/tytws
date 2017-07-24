@@ -13,7 +13,8 @@ import { TeamService } from './services/team'
 
 
 
-
+var Cropper = require('cropperjs');
+var Cropper = require('cropperjs/dist/cropper.min.css');
 require('./bootstrap');
 require('./lib');
 
@@ -26,7 +27,8 @@ require('bootstrap/dist/css/bootstrap.min.css');
 require('bootstrap-social/bootstrap-social.css');
 require('font-awesome/css/font-awesome.min.css');
 
-require("./app.css")
+require("./app.css");
+require("./libs/uploader.js");
 
 window.Vue = require('vue');
 
