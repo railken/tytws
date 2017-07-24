@@ -1,32 +1,4 @@
 <template>
-    <!--<div v-if='user'>
-        <div v-for="team in team.resources">
-
-            <div v-if="editing != team" class='fluid fluid-vcenter'>
-                <div v-on:click="edit(team)">{{ team.id }} - {{ team.name }}</div>
-
-                <button class='btn btn-danger' v-on:click="remove(team)">Remove</button>
-            </div>
-            <div v-else>
-                <input type='text' class='form-control' v-model="form.update.name" placeholder='name'>
-                <textarea class='form-control' v-model="form.update.description" placeholder='description'></textarea>
-                <button class='btn btn-primary' v-on:click="update(team); edit(null);">Update</button>
-                <button class='btn btn-primary' v-on:click="edit(null)">Back</button>
-            </div>
-
-        </div>
-
-        <span v-on:click="add(true)">Add a new team</span>
-        <div v-if='adding'>
-            <input type='text' class='form-control' v-model="form.insert.name" placeholder='name'>
-            <textarea class='form-control' v-model="form.insert.description" placeholder='description'></textarea>
-            
-            <button class='btn btn-primary' v-on:click="insert()">Add</button>
-            <button class='btn btn-primary' v-on:click="add(false)">Back</button>
-        </div>
-    </div>
-
-    -->
     <div>
         <div class='side-left' v-if='user'>
 
