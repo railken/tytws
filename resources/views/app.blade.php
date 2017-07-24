@@ -11,7 +11,7 @@
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
     </head>
     <body>
-        <main  id='app' class='full-height'><router-view></router-view></main>
+        <main  id='app' class='container full-height'><router-view></router-view></main>
         <script src="/nut/app.js?v={{ microtime(true) }}"></script>
     </body>
 </html>

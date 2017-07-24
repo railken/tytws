@@ -1,7 +1,7 @@
-
 .main {
     margin-top: 51px;
 }
+
 main {
     background: #fafafa;
     font-size: 14px;
@@ -53,9 +53,6 @@ nav .nav-list {
     border-bottom: 1px solid #e6e6e6;
 }
 
-nav {
-    overflow-y: scroll;  
-}
 
 nav .nav-project:not(:last-child){
     border-bottom: 1px solid #efefef;
@@ -63,13 +60,12 @@ nav .nav-project:not(:last-child){
 
 .nav-teams {
     background: #3d3d47;
-    border-left: 5px solid #3a3a43;
     min-width: 60px;
 }
 
 .nav-team {
     border-radius: 5px;
-    margin: 10px 4px;
+    margin: 10px 10px;
     width: 50px;
     height: 50px;
     opacity: 0.7;
@@ -96,16 +92,9 @@ nav .nav-project:not(:last-child){
 }
 
 
-::-webkit-scrollbar {
-    width: 6px;
-    background: rgba(0, 0, 0, 0.05);
-}
 
-::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.15);
-    width: 6px;
-}
-
-::-webkit-scrollbar-corner {
-    background: #000;
+.container {
+    margin: 0 auto;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
 }

@@ -1,11 +1,6 @@
-
-
 body{
-    background-color: #fff;
+    background-color: #52525d;
     margin: 0;
-}
-
-body {
 	color: rgb(32, 32, 32);
     font-family: 'Open Sans', sans-serif;
     font-weight: 100;
@@ -24,16 +19,6 @@ img {
     max-width: 100%;
 }
 
-.header-content {
-    width: 100%;
-    max-width: 1024px;
-    margin:0 auto;
-    padding:0 15px;
-}
-
-.header-content > div {
-    padding:0 15px;
-}
 
 
 .fluid {

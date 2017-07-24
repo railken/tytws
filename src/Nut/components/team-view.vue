@@ -81,30 +81,39 @@
         </div>
 
         <div class='paper'>
-        <div class='fluid'>
-            <span>{{ team.name }}</span>
-            <div class='fluid fluid-stretch dropdown'>
-                <div class='nav-project-action-icon-a fluid fluid-vcenter fill' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="nav-team-actions">
-             
-                    <i class='fa fa-gear nav-project-action-icon'></i>
-                </div>
-                <div class="dropdown-menu" aria-labelledby="nav-team-actions">
+            <div class='fluid'>
+                <span>{{ team.name }}</span>
+                <div class='fluid fluid-stretch dropdown'>
+                    <div class='nav-project-action-icon-a fluid fluid-vcenter fill' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="nav-team-actions">
+                 
+                        <i class='fa fa-gear nav-project-action-icon'></i>
+                    </div>
+                    <div class="dropdown-menu" aria-labelledby="nav-team-actions">
 
-                    <!--<a class="dropdown-item" href="#" data-toggle="modal" data-team-id='{team.id}' data-target="#project-create">Create project</a>-->
+                        <!--<a class="dropdown-item" href="#" data-toggle="modal" data-team-id='{team.id}' data-target="#project-create">Create project</a>-->
 
-                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#team-update" data-id="{id}">Edit</a>
-                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#team-change-avatar" data-id="{id}">Change avatar</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#team-remove" data-id="{id}">Remove</a>
-                    <!--
-                    <form method='POST' class='projects-delete'>
-                        <input type='hidden' name='id' value='{id}'>
-                        <button class="dropdown-item" type='submit'>Leave project</button>
-                    </form>-->
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#team-update" data-id="{id}">Edit</a>
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#team-change-avatar" data-id="{id}">Change avatar</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#team-remove" data-id="{id}">Remove</a>
+                        <!--
+                        <form method='POST' class='projects-delete'>
+                            <input type='hidden' name='id' value='{id}'>
+                            <button class="dropdown-item" type='submit'>Leave project</button>
+                        </form>-->
+                    </div>
                 </div>
+
             </div>
-
         </div>
+
+        <div class='fluid'>
+            <div class='paper'>
+                Last month
+            </div>
+            <div class='paper'>
+                Current month
+            </div>
         </div>
     </div>
 </template>
