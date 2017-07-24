@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <div class='side-left' v-if='user'>
+    <div class='full-height'>
+        <div class='side-left full-height' v-if='user'>
 
             <div class='full-height fluid'>
                 <nav class='full-height nav-teams'>

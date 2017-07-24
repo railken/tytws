@@ -15,7 +15,7 @@ class TeamSerializer extends ModelSerializer
 	 *
 	 * @return array
 	 */
-	public function serialize(ModelContract $entity)
+	public function serialize(ModelContract $entity, $activities = [])
 	{
 		return [
 			'id' => $entity->id,
@@ -23,7 +23,7 @@ class TeamSerializer extends ModelSerializer
 			'name' => $entity->name,
 			'description' => $entity->description,
             'avatar' => $entity->avatar ? \Storage::url($entity->avatar)."?=".\Storage::lastModified($entity->avatar) : null,
-            'info' => $this->info($entity)
+            'info' => $this->info($entity, $activities)
 		];
 	}
 
@@ -34,11 +34,27 @@ class TeamSerializer extends ModelSerializer
 	 *
 	 * @return array
 	 */
-	public function info(ModelContract $entity)
+	public function info(ModelContract $entity, $activities)
 	{
+
+		if (empty($activities))
+			return [];
+		
 		return [
-			'hours' => $entity->getTotalActivitiesTimeHours(),
+			'hours' => $this->infoHours($activities)
 		];
+	}
+
+	public function infoHours($activities)
+	{
+		$time = 0;
+
+		$activities->map(function($activity) use (&$time){
+            $time += $activity->getTimeSpent();
+        });
+
+        return round($time/3600);
+
 	}
 
 }

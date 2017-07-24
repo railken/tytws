@@ -104,42 +104,76 @@
         </div>
 
         <div class='paper content-spacing fluid fluid-center'>
-            <select class='form-control'>
-                <option>Today</option>
-                <option>Yesterday</option>
-                <option>Current Week</option>
-                <option>Previous Week</option>
-                <option>Current Month</option>
-                <option>Previous Month</option> 
+            <select class='form-control' v-model='filter.data'>
+                <option value='week_current'>Current Week</option>
+                <option value='month_current'>Current Month</option>
+                <option value='month_last'>Last Month</option>
             </select>
         </div>
 
-        <div class='paper content-spacing'>
-            chart1:  hours x days 
+        <div class='paper'>
+            <canvas id="chart_1" width="400" height="200"></canvas>
         </div>
 
-        <div class='paper content-spacing'>
+        <!--<div class='paper content-spacing'>
             chart2: how many hours x hour of day 
-        </div>
+        </div>-->
 
-        <component-activity-list v-bind:team='team'></component-activity-list>
+        <component-activity-list v-bind:team='team' v-bind:filter='filter.values[filter.data]'></component-activity-list>
     </div>
 </template>
 
 <script>
     import { container } from '../services/container';
+    import Chart from 'chart.js';
     export default {
 
         watch: {
-            '$route': 'fetchData'
+            '$route': 'fetchData',
+            'filter.data': 'fetchData'
         },
         data: function() {
             return { 
+                filter: {
+                    data: "month_current",
+                    values: {
+                        "today": function() {
+                            return {
+                                from: container.get('date')().format('YYYY-MM-DD 00:00:00'),
+                                to: container.get('date')().format('YYYY-MM-DD 23:59:59')
+                            }
+                        },
+                        "week_current": function() {
+                            return {
+                                from: container.get('date')().startOf('week').isoWeekday(1).format('YYYY-MM-DD HH:mm:ss'),
+                                to: container.get('date')().startOf('week').add(1, 'day').subtract(1, 'second').format('YYYY-MM-DD HH:mm:ss')
+                            }
+                        },
+                        "month_current": function() {
+                            return {
+                                from: container.get('date')().startOf('month').format('YYYY-MM-DD HH:mm:ss'),
+                                to: container.get('date')().endOf('month').format('YYYY-MM-DD 23:59:59')
+                            }
+                        },
+                        "month_last": function() {
+                            return {
+                                from: container.get('date')().subtract(1, "month").startOf('month').format('YYYY-MM-DD HH:mm:ss'),
+                                to: container.get('date')().subtract(1, "month").endOf('month').format('YYYY-MM-DD 23:59:59')
+                            }
+                        }
+                    }
+                },
                 team: null,
                 user: container.get('user'),
                 form: {
                     update: {}
                 },
+                charts: {
+                    hoursPerDay: {
+                        labels: ["a", "b", "c"],
+                        data: [3, 4, 5]
+                    }
+                }
             }
         },
         methods: {
@@ -202,22 +236,75 @@
 
                 var self = this;
 
+                
+                var act = this.filter.values[this.filter.data]();
+
                 container.get('services.team').get(team_id, {
-                    params: {},
+                    params: {
+                        activities_from: act.from,
+                        activities_to: act.to,
+                    },
                     success: function(response) {
 
                         self.team = response.data.resources;
                         self.form.update = self.team;
 
+                        // self.charts.hoursPerDay = self.team.reports.hoursPerDay;
+
+                        console.log(self.filter.values.week_current());
+                        setTimeout(function() {
+
+                            self.drawCharts();
+
+                        }, 1000);
                     },
                     error: function(response) {
                         
                         container.get('router').push({ name: 'index'});
                     }
                 });
+            },
+
+            drawCharts() {
+
+                if (!$("#chart_1").length)
+                    return;
+
+                return;
+                
+                var chart = new Chart($("#chart_1"), {
+                    type: 'line',
+                    data: {
+                        labels: this.charts.hoursPerDay.labels,
+                        datasets: [{
+                            label: 'Hours X Day',
+                            data: this.charts.hoursPerDay.data,
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                            ],
+                            borderColor: [
+                                'rgba(255,99,132,1)',
+                                'rgba(54, 162, 235, 1)',
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero:true
+                                }
+                            }]
+                        }
+                    }
+                });
             }
+
         },
         mounted() {
+
             this.fetchData();
         }
     }

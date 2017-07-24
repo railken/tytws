@@ -54,7 +54,7 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body" v-if="editing">
+                    <div class="modal-body">
                         <div class="modal-footer">
 
                             <textarea class='form-control' placeholder='Activity description' rows='10' v-model="form.description"></textarea>
@@ -148,9 +148,10 @@
 <script>
     import { container } from '../services/container';
     export default {
-        props: ['team'],
+        props: ['team', 'filter'],
         watch: {
             'team': 'all',
+            'filter': 'all',
         },
         data: function() {
             return { 
@@ -204,8 +205,19 @@
             showUpdate (activity)
             {
                 this.editing = activity;
+
                 this.form = activity;
-                this.reload();
+
+                $('.datepicker').datepicker({
+                    format: "dd/mm/yyyy",
+                    autoclose: true,
+                });;
+
+                this.form.started_at_date = container.get('date')(this.form.started_at).format('DD/MM/YYYY');
+                this.form.started_at_time = container.get('date')(this.form.started_at).format('HH:mm');
+                this.form.ended_at_date = container.get('date')(this.form.ended_at).format('DD/MM/YYYY');
+                this.form.ended_at_time = container.get('date')(this.form.ended_at).format('HH:mm');
+
             },
             showRemove (activity)
             {
@@ -216,10 +228,13 @@
 
                 this.reload();
 
+                var act = this.filter();
 
                 container.get('services.activity').all({
                     params: {
-                        "search[team_id]": self.team.id
+                        "search[team_id]": self.team.id,
+                        activities_from: act.from,
+                        activities_to: act.to
                     },
                     success: function(response) {
 
