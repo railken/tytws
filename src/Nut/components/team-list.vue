@@ -9,14 +9,14 @@
                         <img v-bind:src="'https://api.adorable.io/avatars/50/'+team.uid" v-if='!team.avatar'></i>
                     </div>
 
-                    <div class='nav-team nav-team-add'  data-toggle="modal" data-target="#team-create">
+                    <div class='nav-team nav-team-add' data-toggle="modal" data-target="#team-create">
                         <i class='fa fa-plus'></i>
                     </div>
                 </nav>
             </div>
         </div>
 
-        <div class="modal fade modal-small" data-modal-type='team' id='team-create'>
+        <div class="modal fade modal-small" id='team-create'>
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header fluid">
@@ -29,9 +29,9 @@
                     <div class="modal-body">
                         <div class="modal-footer">
 
-                            <input type='text' class='form-control' name='name' placeholder='Team name'  v-model="form.insert.name">
+                            <input type='text' class='form-control' name='name' v-model="form.insert.name">
                             <br>
-                            <textarea class='form-control' placeholder='Team description' rows='10' name='description'  v-model="form.insert.description"></textarea>
+                            <textarea class='form-control' placeholder='Team description' rows='10' v-model="form.insert.description"></textarea>
                             <br>
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-primary" v-on:click='insert()'>Create</button>
@@ -84,8 +84,6 @@
                         }
                     });
                 },
-
-             
                 
                 insert: function() {
                     var self = this;

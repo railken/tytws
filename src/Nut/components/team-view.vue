@@ -71,7 +71,6 @@
                     </div>
                     
                     <div class="modal-footer">
-                        <input type='hidden' name='id' value='{team.id}'>
                         <button type="submit" class="btn btn-primary" data-dismiss="modal" v-on:click="remove()">Yes, remove</button>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">No, Close</button>
                         

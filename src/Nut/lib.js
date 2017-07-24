@@ -58,19 +58,3 @@ Object.defineProperty(Array.prototype, 'updateByAttribute', {
 		}
 	}
 });
-Object.defineProperty(Array.prototype, 'removeByAttribute', {
-    enumerable: false,
-    value:  function(attribute, value)
-	{
-		var index = this.findByAttribute(attribute, value);
-		return index !== null ? this.remove(index) : null;
-	}	
-});
-
-Object.defineProperty(Array.prototype, 'remove', {
-    enumerable: false,
-    value: function(index)
-	{
-		return this.splice(index, 1);
-	}
-});

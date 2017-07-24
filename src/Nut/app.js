@@ -13,10 +13,16 @@ import { TeamService } from './services/team';
 import { ActivityService } from './services/activity';
 
 
+/**
+ * Bootstrap
+ */
+require('./bootstrap');
+
 
 var Cropper = require('cropperjs');
-var Cropper = require('cropperjs/dist/cropper.min.css');
-require('./bootstrap');
+require('cropperjs/dist/cropper.min.css');
+
+
 require('./lib');
 
 
@@ -30,6 +36,11 @@ require('font-awesome/css/font-awesome.min.css');
 
 require("./app.css");
 require("./libs/uploader.js");
+
+require('bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js');
+require('bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css')
+require('bootstrap-datepicker/dist/css/bootstrap-datepicker3.min.css');
+
 
 window.Vue = require('vue');
 
@@ -50,7 +61,7 @@ container.set('services.request', new Request());
 container.set('services.cookies', Cookies);
 container.set('services.team', new TeamService());
 container.set('services.activity', new ActivityService());
-
+container.set('date', require('moment'));
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

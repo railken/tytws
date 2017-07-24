@@ -20,6 +20,7 @@
     "vue": "^2.4.2"
   },
   "dependencies": {
+    "bootstrap-datepicker": "^1.7.1",
     "bootstrap-social": "^5.1.1",
     "cookies": "^0.7.0",
     "cropperjs": "^1.0.0-rc.3",
@@ -27,6 +28,7 @@
     "fs": "0.0.1-security",
     "js-cookie": "^2.1.4",
     "js-cookies": "^1.0.4",
+    "moment": "^2.18.1",
     "net": "^1.0.2",
     "npm-watch": "^0.2.0",
     "query-string": "^4.3.4",
