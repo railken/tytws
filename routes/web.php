@@ -28,6 +28,16 @@ Route::group(['prefix' => 'api/v1'], function() {
             Route::delete('/{ids}', ['uses' => '\Api\Http\Controllers\User\TeamsController@delete']);
         });
 
+        
+        Route::group(['prefix' => '/user/activities'], function () {
+            Route::get('/', ['uses' => '\Api\Http\Controllers\User\ActivitiesController@index']);
+            Route::post('/', ['uses' => '\Api\Http\Controllers\User\ActivitiesController@create']);
+            Route::get('/{id}', ['uses' => '\Api\Http\Controllers\User\ActivitiesController@show']);
+            Route::put('/{id}', ['uses' => '\Api\Http\Controllers\User\ActivitiesController@update']);
+            Route::delete('/{ids}', ['uses' => '\Api\Http\Controllers\User\ActivitiesController@delete']);
+        });
+
+
 	});
 });
 

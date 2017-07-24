@@ -15,7 +15,7 @@ class UserAgent extends Agent
 	 */
 	protected $permissions = [
 		'profile.*|o',
-		'project.*|o',
+		'activity.*|o',
 		'team.*|o'
 	];
 
