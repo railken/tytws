@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Railken\Laravel\Manager\ModelContract;
 use Railken\Laravel\Manager\Permission\ResourceContract;
 use Core\User\User;
+use Core\Activity\Activity;
 
 class Team extends Model implements ModelContract, ResourceContract
 {
@@ -45,5 +46,24 @@ class Team extends Model implements ModelContract, ResourceContract
     public function getUser()
     {
     	return $this->user;
+    }
+
+    public function activities()
+    {
+        return $this->hasMany(Activity::class, 'team_id');
+    }
+
+    public function getTotalActivitiesTimeHours()
+    {
+
+        $time = 0;
+        
+        $this->activities->map(function($activity) use (&$time){
+            $time += $activity->getTimeSpent();
+        });
+
+
+        $time = round($time/3600);
+        return $time;
     }
 }

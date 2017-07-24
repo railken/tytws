@@ -99,8 +99,11 @@
 
             </div>
         </div>
+        <div class='paper content-spacing paper-primary '>
+            <span class='text-big'>{{ team.info.hours }} hours</span>
+        </div>
 
-        <div class='paper content-spacing'>
+        <div class='paper content-spacing fluid fluid-center'>
             <select class='form-control'>
                 <option>Today</option>
                 <option>Yesterday</option>
@@ -109,9 +112,6 @@
                 <option>Current Month</option>
                 <option>Previous Month</option> 
             </select>
-        </div>
-        <div class='paper content-spacing'>
-            Sum of total hours
         </div>
 
         <div class='paper content-spacing'>

@@ -56,4 +56,9 @@ class Activity extends Model implements ModelContract, ResourceContract
     {
     	return $this->user;
     }
+
+    public function getTimeSpent()
+    {
+        return $this->ended_at->getTimestamp() - $this->started_at->getTimestamp();
+    }
 }
