@@ -11,22 +11,22 @@ export default new VueRouter({
 	routes: [
 		{
 			path: '/',
-			name: 'Hello',
+			name: 'index',
 			component: Main
 		},
 		{
 			path: '/login',
-			name: 'Autenticazione',
+			name: 'login',
 			component: Login
 		},
 		{
 			path: '/oauth/:provider/token',
-			name: 'Provider',
+			name: 'login_token',
 			component: LoginToken
 		},
 		{
 			path: '/team/:team',
-			name: 'Team',
+			name: 'team',
 			component: Team
 		}
 	],

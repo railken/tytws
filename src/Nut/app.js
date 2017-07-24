@@ -39,7 +39,7 @@ const queryString = require('query-string');
 container.set('env', env);
 container.set('queryParams', queryString.parse(location.search));
 
-
+container.set('router', router);
 container.set('route', window.location.pathname);
 
 container.set('services.oauth', new OAuth());
@@ -47,13 +47,6 @@ container.set('services.request', new Request());
 container.set('services.cookies', Cookies);
 container.set('services.team', new TeamService());
 
-/*
-if (store.get('route') != '/login') {
-	window.location.href = "/login";
-
-	throw new Error("User not logged");
-}
-*/
 
 
 

@@ -19,12 +19,7 @@
 
         data: function() {
             return { 
-                user: null,
-                logout: function() {
-
-                    container.get('services.oauth').logout();
-                    window.location.href = "/login";
-                }
+                user: null
             }
         },
         mounted() {
@@ -35,7 +30,7 @@
                     self.user = container.get('user');
                 },
                 error: function() {
-                    window.location.href = "/login";
+                    container.get('router').push({ name: 'login'});
                 }
             });
            

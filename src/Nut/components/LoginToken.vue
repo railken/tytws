@@ -22,7 +22,7 @@
         		},
         		error: function(response) {
                     
-        			window.location.href = "/login";
+                    container.get('router').push({ name: 'login'});
         		}
         	});
 

@@ -40,7 +40,8 @@
                 logout: function() {
 
                     container.get('services.oauth').logout();
-                    window.location.href = "/login";
+
+                    container.get('router').push({ name: 'login'});
                 }
                 
             }

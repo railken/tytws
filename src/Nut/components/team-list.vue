@@ -79,7 +79,6 @@
 <script>
     import { container } from '../services/container';
     export default {
-
         data: function() {
             return { 
                 user: container.get('user'),
@@ -92,7 +91,7 @@
                 editing: {},
                 to: function(team)
                 {
-                    window.location.href='/team/'+team.id;
+                    container.get('router').push({ name: 'team', params: {team: team.id}});
                 },
                 edit: function(team)
                 {

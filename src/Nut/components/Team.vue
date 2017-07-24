@@ -6,7 +6,7 @@
             <div class='container-teams'>
                 <component-team-list></component-team-list>
             </div>
-            <div class='container-content' v-if='team'>
+            <div class='container-content'>
                 <component-team-view></component-team-view>
             </div>
         </div>
@@ -21,12 +21,6 @@
         data: function() {
             return { 
                 user: null,
-                team: null,
-                logout: function() {
-
-                    container.get('services.oauth').logout();
-                    window.location.href = "/login";
-                }
             }
         },
         mounted() {
@@ -37,22 +31,10 @@
                     self.user = container.get('user');
                 },
                 error: function() {
-                    window.location.href = "/login";
+                    container.get('router').push({ name: 'login'});
                 }
             });
             
-            var team_id = this.$route.params.team;
-
-            container.get('services.team').get(team_id, {
-                params: {},
-                success: function(response) {
-                    self.team = response.data.resources;
-                    container.set('team', self.team);
-                },
-                error: function(response) {
-                    console.log(response);
-                }
-            });
         }
     }
 
