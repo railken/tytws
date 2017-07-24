@@ -48,8 +48,7 @@ container.set('services.oauth', new OAuth());
 container.set('services.request', new Request());
 container.set('services.cookies', Cookies);
 container.set('services.team', new TeamService());
-
-
+container.set('services.activity', new ActivityService());
 
 
 /**
