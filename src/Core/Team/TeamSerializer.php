@@ -100,7 +100,7 @@ class TeamSerializer extends ModelSerializer
         });
 
 		$data = $data->map(function($v) {
-        	return round($v/3600);
+        	return $v/3600;
 		})->sortBy(function($k, $key) {
 			return (new \DateTime($key))->getTimestamp();
 		});
