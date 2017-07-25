@@ -59,6 +59,9 @@ container.set('services.cookies', Cookies);
 container.set('services.team', new TeamService());
 container.set('services.activity', new ActivityService());
 container.set('date', require('moment'));
+container.get('date').locale('en', {
+  week: { dow: 1 } // Monday is the first day of the week
+});
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

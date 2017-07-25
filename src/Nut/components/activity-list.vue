@@ -95,16 +95,26 @@
                 <tbody>
                     <tr>
                         <th></th>
-                        <th class='col'>Started At</th>
-                        <th class='col'>Ended At</th>
+                        <th class='col'>Time</th>
                         <th class='col'>Description</th>
                         <th class='col  col-actions'>Actions</th>
                     </tr>
 
                     <tr v-for='activity in activities.resources' class='row'>
                         
-                        <td class='col'><span>{{ activity.started_at.format("YYYY-MM-DD HH:mm") }}</span></td>
-                        <td class='col'><span>{{ activity.ended_at.format("YYYY-MM-DD HH:mm") }}</span></td>
+                        <td class='col'>
+                            <span v-if="activity.started_at.isSame(activity.ended_at, 'day')">
+                                {{ activity.started_at.format("DD/MM/YYYY") }} at
+
+
+                                {{ activity.started_at.format("HH::mm") }} =>
+                                {{ activity.ended_at.format("HH::mm") }}
+                            </span>
+                            <span v-else>
+                                {{ activity.started_at.format(config.date.format) }} -
+                                {{ activity.ended_at.format(config.date.format) }}
+                            </span>
+                        </td>
                         <td class='col'><span>{{ activity.description }}</span></td>
                         <td class='col col-actions'>
                             <button class='btn btn-primary' v-on:click="showUpdate(activity)" data-toggle="modal" data-target="#activity-update"><i class='fa fa-pencil'></i></button>
@@ -135,7 +145,7 @@
                         keyBinds: {
                             left: null,
                             right: null
-                        },
+                        }
 
                     }
                 },
