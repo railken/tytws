@@ -29,7 +29,7 @@
                     <div class="modal-body">
                         <div class="modal-footer">
 
-                            <input type='text' class='form-control' name='name' v-model="form.insert.name">
+                            <input type='text' class='form-control' name='name' v-model="form.insert.name" placeholder="Team name">
                             <br>
                             <textarea class='form-control' placeholder='Team description' rows='10' v-model="form.insert.description"></textarea>
                             <br>
@@ -94,6 +94,7 @@
                         params: self.form.insert,
                         success: function(response) {
                             self.all();
+                            $('.modal').modal('hide');
                         },
                         error: function(response) {
                             console.log(response);

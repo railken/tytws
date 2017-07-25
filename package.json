@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "bootstrap-datepicker": "^1.7.1",
+    "bootstrap-datetimepicker": "0.0.7",
     "bootstrap-social": "^5.1.1",
     "chart.js": "^2.6.0",
     "cookies": "^0.7.0",
@@ -30,11 +31,13 @@
     "js-cookie": "^2.1.4",
     "js-cookies": "^1.0.4",
     "moment": "^2.18.1",
+    "moment-timezone": "^0.5.13",
     "net": "^1.0.2",
     "npm-watch": "^0.2.0",
     "query-string": "^4.3.4",
     "store": "^2.0.12",
     "tls": "0.0.1",
+    "vue-datetime-picker": "^0.2.1",
     "vue-router": "^2.7.0"
   }
 }

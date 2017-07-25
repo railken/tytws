@@ -37,9 +37,6 @@ require('font-awesome/css/font-awesome.min.css');
 require("./app.css");
 require("./libs/uploader.js");
 
-require('bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js');
-require('bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css')
-require('bootstrap-datepicker/dist/css/bootstrap-datepicker3.min.css');
 
 
 window.Vue = require('vue');

@@ -3,7 +3,7 @@
         <component-header></component-header>
             
         <div class='fluid main'>
-                <component-team-list></component-team-list>
+            <component-team-list></component-team-list>
             <div class='container-content fill'>
                 <component-team-view></component-team-view>
             </div>

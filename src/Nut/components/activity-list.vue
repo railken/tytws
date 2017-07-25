@@ -16,23 +16,9 @@
 
                             <textarea class='form-control' placeholder='Activity description' rows='10' v-model="form.description"></textarea>
                             <br>
-
-                            <div class='fluid datetime-container'>
-                                <div class="fluid date datepicker">
-                                    <input type="text" class="form-control" v-model="form.started_at_date">
-                                    <span class="input-group-addon fluid fluid-center"><i class="fa fa-calendar"></i></span>
-                                </div>
-                                <input type='time' class='form-control time' v-model="form.started_at_time">
-                            </div>
+                            <date-picker v-model="form.started_at" :config="config.date"></date-picker>
                             <br>
-
-                            <div class='fluid datetime-container'>
-                                <div class="fluid date datepicker">
-                                    <input type="text" class="form-control" v-model="form.ended_at_date">
-                                    <span class="input-group-addon fluid fluid-center"><i class="fa fa-calendar"></i></span>
-                                </div>
-                                <input type='time' class='form-control time' v-model="form.ended_at_time">
-                            </div>
+                            <date-picker v-model="form.ended_at" :config="config.date"></date-picker>
                             <br>
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-primary" v-on:click='insert()'>Create</button>
@@ -60,22 +46,9 @@
                             <textarea class='form-control' placeholder='Activity description' rows='10' v-model="form.description"></textarea>
                             <br>
 
-                            <div class='fluid datetime-container'>
-                                <div class="fluid date datepicker">
-                                    <input type="text" class="form-control" v-model="form.started_at_date">
-                                    <span class="input-group-addon fluid fluid-center"><i class="fa fa-calendar"></i></span>
-                                </div>
-                                <input type='time' class='form-control time' v-model="form.started_at_time">
-                            </div>
+                            <date-picker v-model="form.started_at" :config="config.date"></date-picker>
                             <br>
-
-                            <div class='fluid datetime-container'>
-                                <div class="fluid date datepicker">
-                                    <input type="text" class="form-control" v-model="form.ended_at_date">
-                                    <span class="input-group-addon fluid fluid-center"><i class="fa fa-calendar"></i></span>
-                                </div>
-                                <input type='time' class='form-control time' v-model="form.ended_at_time">
-                            </div>
+                            <date-picker v-model="form.ended_at" :config="config.date"></date-picker>
                             <br>
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-primary" v-on:click='update(editing)'>Update</button>
@@ -122,17 +95,17 @@
                 <tbody>
                     <tr>
                         <th></th>
-                        <th class='col'>Description</th>
                         <th class='col'>Started At</th>
                         <th class='col'>Ended At</th>
+                        <th class='col'>Description</th>
                         <th class='col  col-actions'>Actions</th>
                     </tr>
 
                     <tr v-for='activity in activities.resources' class='row'>
                         
+                        <td class='col'><span>{{ activity.started_at.format("YYYY-MM-DD HH:mm") }}</span></td>
+                        <td class='col'><span>{{ activity.ended_at.format("YYYY-MM-DD HH:mm") }}</span></td>
                         <td class='col'><span>{{ activity.description }}</span></td>
-                        <td class='col'><span>{{ activity.started_at }}</span></td>
-                        <td class='col'><span>{{ activity.ended_at }}</span></td>
                         <td class='col col-actions'>
                             <button class='btn btn-primary' v-on:click="showUpdate(activity)" data-toggle="modal" data-target="#activity-update"><i class='fa fa-pencil'></i></button>
                             <button class='btn btn-danger'  v-on:click="showRemove(activity)" data-toggle="modal" data-target="#activity-remove"><i class='fa fa-trash'></i></button>
@@ -147,6 +120,7 @@
 
 <script>
     import { container } from '../services/container';
+
     export default {
         props: ['team', 'filter'],
         watch: {
@@ -155,51 +129,35 @@
         },
         data: function() {
             return { 
+                config: {
+                    date: {
+                        format:'DD/MM/YYYY HH:mm',
+                        keyBinds: {
+                            left: null,
+                            right: null
+                        },
+
+                    }
+                },
                 user: container.get('user'),
                 activities: { resources: [], pagination : {}},
                 editing: null,
                 deleting: null,
-                form: {
-                    started_at_date: null,
-                    started_at_time: null,
-                    ended_at_date: null,
-                    ended_at_time: null
-                },
+                form: {}
             }
         },
         methods: {
-            reloadTime()
-            {
-
-                this.form.started_at = container
-                    .get('date')(this.form.started_at_date+" "+this.form.started_at_time, "DD/MM/YYYY HH:mm")
-                    .format("YYYY-MM-DD HH:mm:00");
-
-                this.form.ended_at = container
-                    .get('date')(this.form.ended_at_date+" "+this.form.ended_at_time, "DD/MM/YYYY HH:mm")
-                    .format("YYYY-MM-DD HH:mm:00");
-
-
-            },
             reload()
             {
                 this.form.team_id = this.team.id;
-                $('.datepicker').datepicker({
-                    format: "dd/mm/yyyy",
-                    autoclose: true,
-                });
-                $('.datepicker').datepicker('update', new Date());
-                this.form.started_at_date = container.get('date')().format('DD/MM/YYYY');
-                this.form.started_at_time = container.get('date')().format('HH')+":00";
-                this.form.ended_at_date = container.get('date')().format('DD/MM/YYYY');
-                this.form.ended_at_time = container.get('date')().format('HH')+":00";
-                this.reloadTime();
-
 
             },
             showNew ()
             {
-                this.form = {};
+                this.form = {
+                    started_at: new Date(),
+                    ended_at: new Date(),
+                };
                 this.reload();
             },
             showUpdate (activity)
@@ -208,15 +166,7 @@
 
                 this.form = activity;
 
-                $('.datepicker').datepicker({
-                    format: "dd/mm/yyyy",
-                    autoclose: true,
-                });;
 
-                this.form.started_at_date = container.get('date')(this.form.started_at).format('DD/MM/YYYY');
-                this.form.started_at_time = container.get('date')(this.form.started_at).format('HH:mm');
-                this.form.ended_at_date = container.get('date')(this.form.ended_at).format('DD/MM/YYYY');
-                this.form.ended_at_time = container.get('date')(this.form.ended_at).format('HH:mm');
 
             },
             showRemove (activity)
@@ -251,8 +201,6 @@
             insert: function() {
                 var self = this;
 
-                this.reloadTime();
-
                 this.activities.resources.push(self.form);
 
                 container.get('services.activity').insert( {
@@ -271,8 +219,6 @@
 
             update: function(activity) {
                 var self = this;
-                this.reloadTime();
-
                 container.get('services.activity').update(activity.id, {
                     params: self.form,
                     success: function(response) {

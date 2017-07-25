@@ -56,6 +56,7 @@ class TeamManager extends ModelManager
 
         if (!empty($params['avatar'])) {
             $this->vars['avatar'] = $this->base64ToUploadedFile($params['avatar']);
+            unset($params['avatar']);
         }
 
 		$entity->fill($params);

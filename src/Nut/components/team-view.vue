@@ -319,4 +319,13 @@
     .team-icon-settings {
         font-size: 24px;
     }
+
+    .team-icon-settings {
+        opacity: 0.7;
+        cursor: pointer;
+    }
+
+    .team-icon-settings:hover {
+        opacity: 1.0;
+    }
 </style>

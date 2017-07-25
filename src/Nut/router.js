@@ -40,4 +40,12 @@ Vue.component('component-team-list', require('./components/team-list.vue'));
 Vue.component('component-team-view', require('./components/team-view.vue'));
 Vue.component('component-activity-list', require('./components/activity-list.vue'));
 
+
+
+import datePicker from 'vue-bootstrap-datetimepicker';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css';
+Vue.use(datePicker);
+  
+  
 Vue.use(VueRouter);
