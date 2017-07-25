@@ -33,6 +33,10 @@ img {
     min-height: 100vh;
 }
 
+.stretch-height {
+    display: inline-flex;
+    align-items: stretch;
+}
 .fluid-center {
     align-items: center;
     display: flex;

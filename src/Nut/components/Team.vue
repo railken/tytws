@@ -3,9 +3,7 @@
         <component-header></component-header>
             
         <div class='fluid main'>
-            <div class='container-teams'>
                 <component-team-list></component-team-list>
-            </div>
             <div class='container-content fill'>
                 <component-team-view></component-team-view>
             </div>

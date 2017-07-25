@@ -3,9 +3,7 @@
         <component-header></component-header>
             
         <div class='fluid main'>
-            <div class='container-teams'>
-                <component-team-list></component-team-list>
-            </div>
+            <component-team-list></component-team-list>
             <div class='container-content fill'>
                 <div class='paper content-spacing'>
                     <h1>Dashboard</h1>

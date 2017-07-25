@@ -1,12 +1,12 @@
 <template>
-    <div class='full-height'>
-        <div class='side-left full-height' v-if='user'>
+    <div class='stretch-height'>
+        <div class='side-left stretch-height' v-if='user'>
 
-            <div class='full-height fluid'>
-                <nav class='full-height nav-teams'>
+            <div class='fluid stretch-height'>
+                <nav class='nav-teams'>
                     <div class='nav-team' v-for="team in team.resources" v-on:click="to(team)">
                         <img v-bind:src='team.avatar' width='50' height='50' v-if='team.avatar'>
-                        <img v-bind:src="'https://api.adorable.io/avatars/50/'+team.uid" v-if='!team.avatar'></i>
+                        <img v-bind:src="'https://api.adorable.io/avatars/50/'+team.uid" v-if='!team.avatar'>
                     </div>
 
                     <div class='nav-team nav-team-add' data-toggle="modal" data-target="#team-create">
