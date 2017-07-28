@@ -16,5 +16,6 @@ public/assets/cache/
 public/js/builds/
 public/css/builds/
 public/src
+public/storage
 public/nut/app\.js
 src/Nut/env\.js
