@@ -1,6 +1,8 @@
 <template>
 	<main>
-		Redirecting ...
+		<div class='container-loader'>
+            <div class='sk-rotating-plane'></div>
+        </div>
 	</main>
 </template>
 
@@ -29,4 +31,19 @@
         }
     }
 </script>
+
+<style>
+
+    .container-loader {
+        margin: 100px auto;
+    }
+    .container-loader > div {
+        background-color: white;
+
+    }
+
+    body, main {
+        background-color: #52525d;
+    }
+</style>
 
