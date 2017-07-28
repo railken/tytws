@@ -146,7 +146,7 @@
                         "week_current": function() {
                             return {
                                 from: container.get('date')().startOf('week').isoWeekday(1).format('YYYY-MM-DD HH:mm:ss'),
-                                to: container.get('date')().startOf('week').add(1, 'day').subtract(1, 'second').format('YYYY-MM-DD HH:mm:ss')
+                                to: container.get('date')().startOf('week').add(6, 'day').add(1, 'day').subtract(1, 'second').format('YYYY-MM-DD HH:mm:ss')
                             }
                         },
                         "month_current": function() {
