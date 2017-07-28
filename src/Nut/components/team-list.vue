@@ -27,12 +27,13 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <div class="modal-footer">
 
-                            <input type='text' class='form-control' name='name' v-model="form.insert.name" placeholder="Team name">
-                            <br>
-                            <textarea class='form-control' placeholder='Team description' rows='10' v-model="form.insert.description"></textarea>
-                            <br>
+                        <input type='text' class='form-control' name='name' v-model="form.insert.name" placeholder="Team name">
+                        <br>
+                        <textarea class='form-control' placeholder='Team description' rows='10' v-model="form.insert.description"></textarea>
+                        <br>
+                        
+                        <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-primary" v-on:click='insert()'>Create</button>
                             

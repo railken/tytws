@@ -68,12 +68,11 @@
                     </div>
                     <div class="modal-body">
                         <p>You can't go back.</p>
-                    </div>
-                    
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary" data-dismiss="modal" v-on:click="remove()">Yes, remove</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">No, Close</button>
-                        
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary" data-dismiss="modal" v-on:click="remove()">Yes, remove</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">No, Close</button>
+                            
+                        </div>
                     </div>
                 </div>
             </div>
@@ -185,7 +184,7 @@
                 container.get('services.team').remove(team.id, {
                     params: {},
                     success: function(response) {
-                        container.get('router').push({ name: 'index'});
+                        container.get('router').push({ name: 'dashboard'});
                     },
                     error: function(response) {
                         console.log(response);
