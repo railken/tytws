@@ -5,7 +5,7 @@
         </div>
 
         <div class='paper content-spacing paper-primary '>
-            <span class='text-big'> hours</span>
+            <span class='text-big'>{{ hours }} hours</span>
         </div>
 
         <div class='paper content-spacing fluid fluid-center'>
@@ -34,6 +34,7 @@
         data: function() {
             return { 
                 user: container.get('user'),
+                hours: 0,
                 filter: {
                     data: "week_current",
                     values: {
@@ -93,6 +94,7 @@
 
                         self.charts.data = self.data;
 
+
                         setTimeout(function() {
 
                             self.drawCharts();
@@ -143,12 +145,20 @@
                     'rgba(255, 99, 132, 0.8)',
                     'rgba(54, 162, 235, 0.8)',
                 ];
+                        
+
+                this.hours = 0;
+
 
                 for (var i in this.charts.data) {
                     
                     c = this.charts.data[i];
 
                     this.charts.hoursPerDay.el.data.labels = c.reports.hoursPerDay.labels;
+
+
+                    this.hours += c.info.hours;
+
 
                     this.charts.hoursPerDay.el.data.datasets.push({
                         label: c.label,
