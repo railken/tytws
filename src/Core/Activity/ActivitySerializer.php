@@ -22,6 +22,7 @@ class ActivitySerializer extends ModelSerializer
 			'description' => $entity->description,
 			'started_at' => $entity->started_at->format('Y-m-d H:i:s'),
 			'ended_at' => $entity->ended_at->format('Y-m-d H:i:s'),
+			'breaks' => $entity->breaks,
 			'team' => [
 				'id' => $entity->team_id
 			]

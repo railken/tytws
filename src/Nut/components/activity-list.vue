@@ -12,14 +12,22 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <div class="modal-footer">
 
-                            <textarea class='form-control' placeholder='Activity description' rows='10' v-model="form.description"></textarea>
-                            <br>
-                            <date-picker v-model="form.started_at" :config="config.date"></date-picker>
-                            <br>
-                            <date-picker v-model="form.ended_at" :config="config.date"></date-picker>
-                            <br>
+                        <textarea class='form-control' placeholder='Activity description' rows='10' v-model="form.description"></textarea>
+                        <br>
+                        <date-picker v-model="form.started_at" :config="config.date"></date-picker>
+                        <br>
+                        <date-picker v-model="form.ended_at" :config="config.date"></date-picker>
+                        <br>
+                        <label>Breaks: &nbsp;&nbsp;</label>
+                        <br>
+                        <div class='fluid'>
+                            <button class='btn btn-primary' v-on:click="fieldSub('breaks', 5)"><i class='fa fa-minus'></i></button>
+                            <input type='text' class='form-control' v-model="form.breaks">
+                            <button class='btn btn-primary' v-on:click="fieldInc('breaks', 5)" ><i class='fa fa-plus'></i></button>
+                        </div>
+                        
+                        <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-primary" v-on:click='insert()'>Create</button>
                             
@@ -41,15 +49,26 @@
                         </button>
                     </div>
                     <div class="modal-body">
+
+                        <textarea class='form-control' placeholder='Activity description' rows='10' v-model="form.description"></textarea>
+                        <br>
+
+                        <date-picker v-model="form.started_at" :config="config.date"></date-picker>
+                        <br>
+                        <date-picker v-model="form.ended_at" :config="config.date"></date-picker>
+                        <br>
+                        <label>Breaks: &nbsp;&nbsp;</label>
+                        <br>
+                        <div class='fluid'>
+                            <button class='btn btn-primary' v-on:click="fieldSub('breaks', 5)"><i class='fa fa-minus'></i></button>
+                            <input type='text' class='form-control' v-model="form.breaks">
+                            <button class='btn btn-primary' v-on:click="fieldInc('breaks', 5)" ><i class='fa fa-plus'></i></button>
+                        </div>
+
+                        <br>
+
                         <div class="modal-footer">
 
-                            <textarea class='form-control' placeholder='Activity description' rows='10' v-model="form.description"></textarea>
-                            <br>
-
-                            <date-picker v-model="form.started_at" :config="config.date"></date-picker>
-                            <br>
-                            <date-picker v-model="form.ended_at" :config="config.date"></date-picker>
-                            <br>
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-primary" v-on:click='update(editing)'>Update</button>
                             
@@ -107,8 +126,8 @@
                                 {{ activity.started_at.format("DD/MM/YYYY") }} at
 
 
-                                {{ activity.started_at.format("HH::mm") }} =>
-                                {{ activity.ended_at.format("HH::mm") }}
+                                {{ activity.started_at.format("HH:mm") }} =>
+                                {{ activity.ended_at.format("HH:mm") }}
                             </span>
                             <span v-else>
                                 {{ activity.started_at.format(config.date.format) }} -
@@ -157,6 +176,19 @@
             }
         },
         methods: {
+            fieldSub(field, value)
+            {
+                this.form[field] -= value;
+                
+                if (this.form[field] < 0)
+                    this.form[field] = 0;
+
+            },
+            fieldInc(field, value)
+            {
+
+                this.form[field] += value;
+            },
             reload()
             {
                 this.form.team_id = this.team.id;

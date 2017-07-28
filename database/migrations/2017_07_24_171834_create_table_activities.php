@@ -18,6 +18,7 @@ class CreateTableActivities extends Migration
             $table->text('description')->nullable();
             $table->datetime('started_at');
             $table->datetime('ended_at');
+            $table->integer('breaks');
 
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');

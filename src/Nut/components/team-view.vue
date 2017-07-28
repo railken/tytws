@@ -12,15 +12,15 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <div class="modal-footer">
 
-                            <input type='text' class='form-control' name='name' placeholder='Team name'  v-model="form.update.name">
-                            <br>
-                            <textarea class='form-control' placeholder='Team description' rows='10' name='description'  v-model="form.update.description"></textarea>
-                            <br>
+                        <input type='text' class='form-control' name='name' placeholder='Team name'  v-model="form.update.name">
+                        <br>
+                        <textarea class='form-control' placeholder='Team description' rows='10' name='description'  v-model="form.update.description"></textarea>
+                        <br>
+
+                        <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-primary" v-on:click="update();" >Save changes</button>
-                            
                         </div>
                     </div>
                     
@@ -41,15 +41,15 @@
                     <div class="modal-body">
                         <div><img v-bind:src="team.avatar"></div>
                         <hr>
-                        <div class="modal-footer">
 
-                            <div style='display: none;min-height: 100px;' id='team-avatar-container'></div>
-                            <input type='file' class='form-control' data-uploader-image data-input='#team-input-avatar' data-preview='#team-avatar-container' >
-                            <input type='hidden' name='avatar' id='team-input-avatar'>
-                            <br><br>
+                        <div style='display: none;min-height: 100px;' id='team-avatar-container'></div>
+                        <input type='file' class='form-control' data-uploader-image data-input='#team-input-avatar' data-preview='#team-avatar-container' >
+                        <input type='hidden' name='avatar' id='team-input-avatar'>
+                        <br>
+
+                        <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-primary" v-on:click="updateAvatar()">Save changes</button>
-                            
                         </div>
                     </div>
                 </div>

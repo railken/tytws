@@ -20,6 +20,9 @@ img {
 }
 
 
+label {
+    margin: 0;
+}
 
 .fluid {
 	display: flex;
@@ -197,6 +200,7 @@ img {
 
 .modal-footer {
     border: none;
+    padding: 0;
 }
 
 .modal-content {

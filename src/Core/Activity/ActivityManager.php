@@ -35,7 +35,7 @@ class ActivityManager extends ModelManager
 	public function fill(ModelContract $entity, array $params)
 	{
 
-		$params = $this->getOnlyParams($params, ['user', 'team', 'user_id', 'team_id', 'description', 'started_at', 'ended_at']);
+		$params = $this->getOnlyParams($params, ['user', 'team', 'breaks', 'user_id', 'team_id', 'description', 'started_at', 'ended_at']);
 
 
         if (isset($params['user']) || isset($params['user_id'])) {

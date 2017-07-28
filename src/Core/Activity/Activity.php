@@ -26,7 +26,7 @@ class Activity extends Model implements ModelContract, ResourceContract
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['description', 'started_at', 'ended_at', 'user_id', 'team_id'];
+	protected $fillable = ['description', 'started_at', 'ended_at', 'user_id', 'breaks', 'team_id'];
 
 	/**
      * The attributes that should be mutated to dates.
@@ -59,6 +59,6 @@ class Activity extends Model implements ModelContract, ResourceContract
 
     public function getTimeSpent()
     {
-        return $this->ended_at->getTimestamp() - $this->started_at->getTimestamp();
+        return $this->ended_at->getTimestamp() - $this->started_at->getTimestamp() - ($this->breaks*60);
     }
 }
