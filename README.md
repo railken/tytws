@@ -15,8 +15,8 @@ composer install
 3) Setup environment 
 
 ```
-mv .env.copy .env
-mv src/Nut/env.js.copy src/Nut/env.js
+cp .env.example .env
+cp src/Nut/env.js.example src/Nut/env.js
 ```
 
 4) Setup laravel
