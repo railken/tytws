@@ -40,16 +40,27 @@ class ReportsController extends Controller
        	$activities = $this->manager->getRepository()->getQuery()
        		->where("started_at", ">=", $activities_from->format('Y-m-d 00:00:00'))
        		->where("ended_at", "<=", $activities_to->format('Y-m-d 23:59:59'))
-       		->get();
+       		->get()
+            ->groupBy(function($x) {
+                return $x->team_id;
+            });
 
+
+        $resources = $activities->map(function($activities) use ($activities_from, $activities_to) {
+
+            return [ 
+                'info' => $this->manager->serializer->info($activities, $activities_from, $activities_to),
+                'reports' => $this->manager->serializer->reports($activities, $activities_from, $activities_to),
+                'label' => $activities[0]->team->name
+            ];
+
+        });
+                    
 
         return $this->success([
             'message' => 'ok',
             'data' => [
-                'resources' => [
-                    'info' => $this->manager->serializer->info($activities, $activities_from, $activities_to),
-                    'reports' => $this->manager->serializer->reports($activities, $activities_from, $activities_to),
-                ]
+                'resources' => $resources
             ]
         ]);
     }

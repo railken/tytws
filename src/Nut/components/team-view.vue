@@ -135,7 +135,7 @@
         data: function() {
             return { 
                 filter: {
-                    data: "month_current",
+                    data: "week_current",
                     values: {
                         "today": function() {
                             return {

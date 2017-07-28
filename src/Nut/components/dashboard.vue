@@ -5,7 +5,7 @@
         </div>
 
         <div class='paper content-spacing paper-primary '>
-            <span class='text-big'>{{ data.info.hours }} hours</span>
+            <span class='text-big'> hours</span>
         </div>
 
         <div class='paper content-spacing fluid fluid-center'>
@@ -27,11 +27,15 @@
 
     export default {
 
+        watch: {
+            '$route': 'fetchData',
+            'filter.data': 'fetchData'
+        },
         data: function() {
             return { 
                 user: container.get('user'),
                 filter: {
-                    data: "month_current",
+                    data: "week_current",
                     values: {
                         "today": function() {
                             return {
@@ -62,9 +66,9 @@
                 data: null,
                 charts: {
                     hoursPerDay: {
-                        labels: ["a", "b", "c"],
-                        data: [3, 4, 5]
-                    }
+                        data: null
+                    },
+
                 }
             };
         },
@@ -87,8 +91,7 @@
 
                         self.data = response.data.resources;
 
-                        self.charts.hoursPerDay.labels = self.data.reports.hoursPerDay.labels;
-                        self.charts.hoursPerDay.data = self.data.reports.hoursPerDay.data;
+                        self.charts.data = self.data;
 
                         setTimeout(function() {
 
@@ -111,38 +114,51 @@
 
                 if (!this.charts.hoursPerDay.el) {
                     this.charts.hoursPerDay.el = new Chart($("#chart_1"), {
-                        type: 'line',
+                        type: 'bar',
                         data: {
                             labels: [],
-                            datasets: [{
-                                label: 'Hours X Day',
-                                data: [],
-                                backgroundColor: [
-                                    'rgba(255, 99, 132, 0.2)',
-                                    'rgba(54, 162, 235, 0.2)',
-                                ],
-                                borderColor: [
-                                    'rgba(255,99,132,1)',
-                                    'rgba(54, 162, 235, 1)',
-                                ],
-                                borderWidth: 1
-                            }]
+                            datasets: []
                         },
                         options: {
                             scales: {
+                                xAxes: [{
+                                    stacked: true
+                                }],
                                 yAxes: [{
                                     ticks: {
                                         beginAtZero:true
-                                    }
+                                    },
+                                    stacked: true
                                 }]
                             }
                         }
                     });
                 }
 
+                this.charts.hoursPerDay.el.data.datasets = [];
 
-                this.charts.hoursPerDay.el.data.labels = this.charts.hoursPerDay.labels;
-                this.charts.hoursPerDay.el.data.datasets[0].data = this.charts.hoursPerDay.data;
+                var c;
+                var l = 0;
+                var colors = [
+                    'rgba(255, 99, 132, 0.8)',
+                    'rgba(54, 162, 235, 0.8)',
+                ];
+
+                for (var i in this.charts.data) {
+                    
+                    c = this.charts.data[i];
+
+                    this.charts.hoursPerDay.el.data.labels = c.reports.hoursPerDay.labels;
+
+                    this.charts.hoursPerDay.el.data.datasets.push({
+                        label: c.label,
+                        data: c.reports.hoursPerDay.data,
+                        backgroundColor: colors[l],
+                        borderWidth: 1
+                    });
+                    l++;
+                }
+
                 this.charts.hoursPerDay.el.update();
             }
         },
