@@ -1,3 +1,4 @@
+<img src='view.png' width='70%'>
 
 # Installation
 
