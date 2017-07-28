@@ -3,8 +3,8 @@
     <header class=' fluid fluid-vcenter'>
         <div class='container fluid fluid-vcenter '>
             <div class='header-content fluid fluid-vcenter'>
-                <router-link to="/">
-                    <i class='fa fa-home'></i>Track your timey wimey stuff
+                <router-link to="/" class='title'>
+                    <i class='fa fa-home'></i>&nbsp;&nbsp;Track your timey wimey stuff
                 </router-link>
                 <div class='fill'>
 
@@ -99,5 +99,10 @@
     #user-avatar {
         border-radius: 100%;
         border:1px solid #3a3a43;
+    }
+
+    .title {
+        color: white !important;
+        text-decoration: none !important;
     }
 </style>

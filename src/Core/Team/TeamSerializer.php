@@ -5,9 +5,21 @@ namespace Core\Team;
 use Railken\Laravel\Manager\ModelSerializer;
 use Railken\Laravel\Manager\ModelContract;
 
+use Core\Activity\ActivitySerializer;
+
 class TeamSerializer extends ModelSerializer
 {
 
+    /**
+     * Construct
+     *
+     * @param TeamManager $manager
+     */
+    public function __construct(TeamManager $manager)
+    {
+        $this->manager = $manager;
+    }
+    
 	/**
 	 * Serialize entity
 	 *
@@ -40,6 +52,7 @@ class TeamSerializer extends ModelSerializer
 	public function info(ModelContract $entity, $activities, $activities_from, $activities_to)
 	{
 
+		$this->manager->getActivityManager()->serializer->info($activities, $activities_from, $activities_to);
 		if (empty($activities))
 			return [];
 
@@ -70,6 +83,7 @@ class TeamSerializer extends ModelSerializer
 	 */
 	public function reports(ModelContract $entity, $activities, $activities_from, $activities_to)
 	{
+		$this->manager->getActivityManager()->serializer->reports($activities, $activities_from, $activities_to);
 
 		if (empty($activities))
 			return [];

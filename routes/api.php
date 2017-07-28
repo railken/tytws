@@ -37,6 +37,6 @@ Route::group(['prefix' => 'v1'], function() {
             Route::delete('/{ids}', ['uses' => '\Api\Http\Controllers\User\ActivitiesController@delete']);
         });
 
-
+        Route::get('/user/reports/activities', ['uses' => '\Api\Http\Controllers\User\ReportsController@activities']);
     });
 });

@@ -8,6 +8,7 @@ use Railken\Laravel\Manager\Permission\AgentContract;
 
 use Core\Team\Team;
 use Core\User\UserManager;
+use Core\Activity\ActivityManager;
 
 class TeamManager extends ModelManager
 {
@@ -22,6 +23,18 @@ class TeamManager extends ModelManager
 
 		parent::__construct($agent);
 	}
+
+	/**
+	 * New activity manager
+	 *
+	 * @return ActivityManager
+	 */
+	public function getActivityManager()
+	{
+		
+		return new ActivityManager();
+	}
+
     /**
      * Create a new ModelContract given array
      *

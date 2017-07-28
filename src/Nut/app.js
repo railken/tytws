@@ -11,6 +11,7 @@ import * as Cookies from "js-cookie";
 import { Request } from './services/request';
 import { TeamService } from './services/team';
 import { ActivityService } from './services/activity';
+import { ReportService } from './services/report';
 
 
 /**
@@ -58,6 +59,7 @@ container.set('services.request', new Request());
 container.set('services.cookies', Cookies);
 container.set('services.team', new TeamService());
 container.set('services.activity', new ActivityService());
+container.set('services.report', new ReportService());
 container.set('date', require('moment'));
 container.get('date').locale('en', {
   week: { dow: 1 } // Monday is the first day of the week

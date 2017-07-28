@@ -163,6 +163,7 @@
                         }
                     }
                 },
+                loading: false,
                 team: null,
                 user: container.get('user'),
                 form: {
@@ -256,7 +257,7 @@
 
                             self.drawCharts();
 
-                        }, 1000);
+                        }, 1);
                     },
                     error: function(response) {
                         
@@ -316,6 +317,10 @@
 </script>
 
 <style>
+    .container-loader {
+        width: 100%;
+        padding: 200px 0;
+    }
     .team-icon-settings {
         font-size: 24px;
     }

@@ -36,6 +36,7 @@
     }
 
     require('./layout.css');
+    require('spinkit/css/spinners/1-rotating-plane.css');
 </script>
 
 
