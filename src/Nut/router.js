@@ -3,17 +3,12 @@ import VueRouter from 'vue-router'
 import Main from './components/Main'
 import Login from './components/Login'
 import LoginToken from './components/LoginToken'
-import Team from './components/Team'
-
+import TeamView from './components/team-view';
+import Dashboard from './components/dashboard';
 
 
 export default new VueRouter({
 	routes: [
-		{
-			path: '/',
-			name: 'index',
-			component: Main
-		},
 		{
 			path: '/login',
 			name: 'login',
@@ -25,9 +20,21 @@ export default new VueRouter({
 			component: LoginToken
 		},
 		{
-			path: '/team/:team',
-			name: 'team',
-			component: Team
+			path: '/',
+			name: 'index',
+			component: Main,
+			children: [	
+				{
+					path: '',
+					name: 'dashboard',
+					component: Dashboard
+				},	
+				{
+					path: '/team/:team',
+					name: 'team',
+					component: TeamView
+				}
+			]
 		}
 	],
 	hashbang: false,
@@ -37,7 +44,6 @@ export default new VueRouter({
 
 Vue.component('component-header', require('./components/header.vue'));
 Vue.component('component-team-list', require('./components/team-list.vue'));
-Vue.component('component-team-view', require('./components/team-view.vue'));
 Vue.component('component-activity-list', require('./components/activity-list.vue'));
 
 

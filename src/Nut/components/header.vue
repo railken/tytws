@@ -3,9 +3,9 @@
     <header class=' fluid fluid-vcenter'>
         <div class='container fluid fluid-vcenter '>
             <div class='header-content fluid fluid-vcenter'>
-                <div>
-                    Track your timey wimey stuff
-                </div>
+                <router-link to="/">
+                    <i class='fa fa-home'></i>Track your timey wimey stuff
+                </router-link>
                 <div class='fill'>
 
                 </div>
