@@ -35,7 +35,6 @@
 
                         <a href="javascript:;" class="dropdown-item">Signed in as {{ user.username }}</a>
                         <div class="dropdown-divider"></div>
-                        <a href="javascript:;" class="dropdown-item">Settings</a>
                         <a href="javascript:;" class="dropdown-item" v-on:click="logout()">Sign out</a>
                     </div>
                 </div>
