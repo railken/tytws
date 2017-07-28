@@ -12,7 +12,7 @@ export class OAuthGitlabProvider extends OAuthProvider
 
 		this.client_id = container.get('env').oauth.gitlab.client.id;
 		this.client_secret = container.get('env').oauth.gitlab.client.secret;
-		this.redirect_uri = container.get('env').oauth.gitlab.redirect_uri;
+		this.redirect_uri = container.get('env').api.url + container.get('env').oauth.gitlab.redirect_uri;
 	}
 
 	getAuthorizeUrl()
